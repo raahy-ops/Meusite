@@ -9,14 +9,25 @@ use Firebase\JWT\key;
         //criação do json
 
         $payload = [
-            "iss" => "Meusite",
-            "iat" => time(),
+            "iss" => "Meusite", // origem
+            "iat" => time(),   //quando foi criado
             "exp" => time() + (60 * (60 * 1)),  //quando o token expira
             "sub" => $user   //retorna os dados
 
         ];
 
-        return JWT::encode($payload, SECRET_KEY);
+        return JWT::encode($payload, SECRET_KEY, "SH256");
+    }
+
+    function validateToken($token){
+        try{
+            $key = new Key (SECRET_KEY, "SH256");
+            $decode = JWT::decode($token, $key);
+            return $decode->sub;
+
+            }catch(Exception $error){
+                return false;
+        }
     }
 
 ?>
