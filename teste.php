@@ -1,22 +1,40 @@
 <?php
      require_once __DIR__  ."/controllers/AuthController.php";
+     require_once __DIR__  ."/controllers/RoomController.php";
      require_once __DIR__  ."/controllers/PasswordController.php";
       require_once __DIR__  ."/helpers/token_jwt.php";
+      require_once __DIR__  ."/controllers/PasswordController.php";
 
-    $data = [
-        "email" => "Rayssa@gmail.com",
-        "senha" =>"123"
 
-    ];
+        $data = [
+           "nome" => "Quarto Elite",
+           "numero" => 10,
+           "qnt_cama_casal" => 2,
+           "qnt_cama_solteiro" => 2,
+           "preco" => 900,
+           "disponivel" => 1
+
+
+        ];
+
+        RoomController::create($conn, $data);
+
+
+
+    //$data = [
+      //  "email" => "Rayssa@gmail.com",
+      //  "senha" =>"123"
+
+    //];
 
     //AuthController::login($conn, $data);
 
-    $tokenInvalido = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNZXVzaXRlIiwiaWF0IjoxNzU2OTI2NzIyLCJleHAiOjE3NTY5MzAzMjIsInN1YiI6eyJpZCI6MjUsIm5vbWUiOiJSYXlzc2EiLCJlbWFpbCI6IlJheXNzYUBnbWFpbC5jb20iLCJjYXJnbyI6IlRJIn19.ozVGrcLowIwf8X7HFqXVqqo_Q-NTgLfOSWGDVsGzYPI";
+   // $tokenInvalido = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNZXVzaXRlIiwiaWF0IjoxNzU2OTI2NzIyLCJleHAiOjE3NTY5MzAzMjIsInN1YiI6eyJpZCI6MjUsIm5vbWUiOiJSYXlzc2EiLCJlbWFpbCI6IlJheXNzYUBnbWFpbC5jb20iLCJjYXJnbyI6IlRJIn19.ozVGrcLowIwf8X7HFqXVqqo_Q-NTgLfOSWGDVsGzYPI";
     
     // echo validateToken($token);
     
-    $tokenValido = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNZXVzaXRlIiwiaWF0IjoxNzU2OTMwMzYwLCJleHAiOjE3NTY5MzM5NjAsInN1YiI6eyJpZCI6MjUsIm5vbWUiOiJSYXlzc2EiLCJlbWFpbCI6IlJheXNzYUBnbWFpbC5jb20iLCJjYXJnbyI6IlRJIn19.PJ6YBfaHMyI6FebWoOsQZm8Ub2Nb7h73DiOKGYmZLVc";
-    echo var_dump ( validateToken($tokenValido));
+   // $tokenValido = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNZXVzaXRlIiwiaWF0IjoxNzU2OTMwMzYwLCJleHAiOjE3NTY5MzM5NjAsInN1YiI6eyJpZCI6MjUsIm5vbWUiOiJSYXlzc2EiLCJlbWFpbCI6IlJheXNzYUBnbWFpbC5jb20iLCJjYXJnbyI6IlRJIn19.PJ6YBfaHMyI6FebWoOsQZm8Ub2Nb7h73DiOKGYmZLVc";
+   // echo var_dump ( validateToken($tokenValido));
 
         
 
