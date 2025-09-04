@@ -8,16 +8,25 @@
 
         $data = [
            "nome" => "Quarto Elite",
-           "numero" => 10,
-           "qnt_cama_casal" => 2,
-           "qnt_cama_solteiro" => 2,
-           "preco" => 900,
+           "numero" => 18,
+           "qnt_cama_casal" => 1,
+           "qnt_cama_solteiro" => 3,
+           "preco" => 800,
            "disponivel" => 1
 
 
         ];
 
-        RoomController::create($conn, $data);
+
+
+        //RoomController::create($conn, $data);   //inserir dados 
+        //RoomController::getAll($conn);  // busca dados
+        //RoomController::getById($conn, 19); // busca dados específicos
+        //RoomController::delete($conn, 19); // deleta dados
+        RoomController::update($conn, 20, $data);
+
+       
+
 
 
 
