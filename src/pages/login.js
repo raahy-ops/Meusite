@@ -1,4 +1,4 @@
-import { loginRequest } from "../api/authAPI.js";
+import { loginRequest, saveToken } from "../api/authAPI.js";
 import LoginForm from "../components/LoginForm.js";
 import NavBar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
@@ -29,6 +29,8 @@ export default function renderLoginPage() {
     const link = document.createElement('a');
     link.href = "cadastro";
     link.textContent = 'Cadastre-se!';
+   
+
 
     texto.appendChild(link)
     contentForm.insertBefore(texto, contentForm.children[3]);
@@ -37,7 +39,7 @@ export default function renderLoginPage() {
     //Inputs  e botão presentes no form
     const inputEmail = contentForm.querySelector('input[type="email"');
     const inputSenha = contentForm.querySelector('input[type="password"');
-    const btn = contentForm.querySelector('button[type="submit"]');
+    //const btn = contentForm.querySelector('button[type="submit"]');
 
 
     //Monitora o clique no botão para acionar um evento de submeter os dados do form
@@ -49,13 +51,14 @@ export default function renderLoginPage() {
         
         try{
             const result = await loginRequest(email,senha);
-            console.log("Login realizado com sucesso!");
-           window.location.pathname = Meusite/home;
+            console.log("Login realizado com sucesso!" + result.token);
+           //window.location.pathname = "/Meusite/home";
+           saveToken(result.token);
         }
 
         catch{
                 console.log("Erro inesperado!");
-        }
+            }
 
     })
 
