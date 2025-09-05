@@ -1,6 +1,7 @@
 import { loginRequest } from "../api/authAPI.js";
 import LoginForm from "../components/LoginForm.js";
 import NavBar from "../components/Navbar.js";
+import Footer from "../components/Footer.js";
 
 export default function renderLoginPage() { 
     const nav = document.getElementById('navbar');
@@ -8,6 +9,12 @@ export default function renderLoginPage() {
 
     const navbar = NavBar();
     nav.appendChild(navbar);
+
+   const foot = document.getElementById('footer');
+       foot.innerHTML = '';
+   
+       const foote = Footer();
+       foot.appendChild(foote);
 
     const formulario = LoginForm();
     const contentForm = formulario.querySelector('form');

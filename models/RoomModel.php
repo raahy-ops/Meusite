@@ -1,6 +1,7 @@
 <?php
 
 class RoomModel{
+    
     public static function create($conn, $data){
         $sql = "INSERT INTO quartos( nome, numero, qnt_cama_casal, qnt_cama_solteiro, preco, disponivel) VALUES (?,?,?,?,?,?)";
 

@@ -2,6 +2,7 @@
     require_once __DIR__ . "/../models/RoomModel.php";
 
     class RoomController{
+
         public static function create($conn,$data){
             $result = RoomModel::create($conn,$data);
             if($result){
@@ -12,6 +13,7 @@
             }
 
         }
+
         public static function getAll($conn){
             $roomlist = RoomModel::getAll($conn);
             return jsonResponse($roomlist);
@@ -33,7 +35,6 @@
             }
 
         }
-
 
         public static function update($conn, $id, $data){
             $result = RoomModel::update($conn, $id, $data);

@@ -1,5 +1,6 @@
 import Hero from "../components/Hero.js";
 import NavBar from "../components/Navbar.js";
+import Footer from "../components/Footer.js";
 
 export default function renderHomePage() { 
     const nav = document.getElementById('navbar');
@@ -7,6 +8,13 @@ export default function renderHomePage() {
 
     const navbar = NavBar();
     nav.appendChild(navbar);
+
+    const foot = document.getElementById('footer');
+    foot.innerHTML = '';
+
+    const foote = Footer();
+    foot.appendChild(foote);
+
 
     const divRoot = document.getElementById('root');
     divRoot.innerHTML = '';
