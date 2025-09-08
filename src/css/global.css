@@ -11,8 +11,7 @@
     margin-bottom: 20px;
     text-align: center;
 }
-
-.btn {
+.btn-outline-primary {
    font-family: "Righteous", sans-serif;
   font-weight: 400;
    font-size: 17px;
@@ -43,3 +42,7 @@ input:focus{
     outline: none;
     border: 2px solid rgb(127, 124, 167);
 }
+.socials{
+    color:#7E7F60;
+}
+

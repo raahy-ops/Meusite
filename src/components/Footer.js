@@ -3,7 +3,7 @@ export default function Footer() {
   /*Incorporar os arquivos no inner html*/
 
     footer.innerHTML = `
- <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
   <!-- Section: Social media -->
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
     <!-- Left -->
@@ -15,7 +15,7 @@ export default function Footer() {
     <!-- Right -->
     <div>
       <a href="" class="me-4 text-reset">
-        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-facebook-f" ></i>
       </a>
       <a href="" class="me-4 text-reset">
         <i class="fab fa-twitter"></i>
@@ -46,7 +46,7 @@ export default function Footer() {
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
           <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Company name
+            <i class="fas fa-gem me-3"></i>Aurora Inn Hotel  
           </h6>
           <p>
             Here you can use rows and columns to organize your footer content. Lorem ipsum

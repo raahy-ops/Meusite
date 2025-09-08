@@ -25,10 +25,12 @@ export default function renderLoginPage() {
     const texto = document.createElement('p');
     texto.textContent = 'Não possui uma conta? ';
     texto.className = 'texto';
+    texto.style.color = '#7E7F60';
 
     const link = document.createElement('a');
     link.href = "cadastro";
     link.textContent = 'Cadastre-se!';
+    link.style.color = '#916445';
    
 
 
@@ -51,7 +53,6 @@ export default function renderLoginPage() {
         
         try{
             const result = await loginRequest(email,senha);
-            console.log("Login realizado com sucesso!" + result.token);
            //window.location.pathname = "/Meusite/home";
            saveToken(result.token);
         }
