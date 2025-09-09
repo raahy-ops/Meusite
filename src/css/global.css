@@ -46,3 +46,34 @@ input:focus{
     color:#7E7F60;
 }
 
+#root { 
+
+flex-direction: column;
+
+} 
+
+
+
+.hero-frame {
+    height: 70vh;
+    max-width: 1300px; /*Limite de Largura*/
+    margin: 0 auto;
+    overflow: hidden; /*Impede que a imagem vaze do quadro*/
+    /*background: #7E7F60;  Aplicar cor ao fundo quando a imagem não ocupar todo o espaço*/
+
+}
+.hero-img{
+    width: 100%;
+    height: 100%;
+    /*Aplica propriedade cover para que a imagem preencha o quadro*/
+    object-fit: cover;
+    object-position: center; /*Centralizar o recorte da imagem*/
+
+
+}
+@media(max-width: 576px) {
+    .hero-frame{
+        height: 50vh;
+    }   
+}
+
