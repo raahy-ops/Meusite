@@ -42,37 +42,46 @@ input:focus{
     outline: none;
     border: 2px solid rgb(127, 124, 167);
 }
+
 .socials{
     color:#7E7F60;
 }
 
-#root { 
 
-flex-direction: column;
+.containercard{
+    display: flex;
+flex-direction:row;
+justify-content:center;
+align-items:center;
+}
 
-} 
+.date{
+display: flex;
+flex-direction:row;
+justify-content:center;
+align-items:center;
+}
 
-
+.row{
+    width: 75%;
+    margin-top: 40px;
+}
 
 .hero-frame {
-    height: 70vh;
-    max-width: 1300px; /*Limite de Largura*/
-    margin: 0 auto;
     overflow: hidden; /*Impede que a imagem vaze do quadro*/
     /*background: #7E7F60;  Aplicar cor ao fundo quando a imagem não ocupar todo o espaço*/
-
+    
 }
-.hero-img{
-    width: 100%;
-    height: 100%;
+.hero img, .hero {
     /*Aplica propriedade cover para que a imagem preencha o quadro*/
     object-fit: cover;
     object-position: center; /*Centralizar o recorte da imagem*/
+    height: 70vh;
 
 
 }
 @media(max-width: 576px) {
-    .hero-frame{
+    .hero img, .hero{
         height: 50vh;
     }   
 }

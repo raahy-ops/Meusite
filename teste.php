@@ -20,10 +20,10 @@
 
 
         //RoomController::create($conn, $data);   //inserir dados 
-        //RoomController::getAll($conn);  // busca dados
+        RoomController::getAll($conn);  // busca dados
         //RoomController::getById($conn, 19); // busca dados específicos
         //RoomController::delete($conn, 19); // deleta dados
-        RoomController::update($conn, 20, $data);
+       // RoomController::update($conn, 20, $data);
 
        
 

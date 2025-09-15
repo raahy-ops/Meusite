@@ -6,7 +6,7 @@ export default function Hero() {
 
   containerHero.innerHTML = `
   
-  <div class = "hero-frame rounded-4  w-100">
+  <div class = "hero-frame w-100">
     <div id="carouselExampleIndicators" class="carousel slide">
 
     <div class="carousel-indicators">
@@ -17,14 +17,15 @@ export default function Hero() {
     </div>
 
     <div class="carousel-inner shadow">
+
       <div class="carousel-item active">
-        <img src="public/assets/img/AdobeStock_1324283125.jpeg" class="d-block w-100" alt="...">
+        <img src="public/assets/img/AdobeStock_1266431456.jpeg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="public/assets/img/saguao.jpg" class="d-block w-100" alt="...">
+        <img src="public/assets/img/segunda.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="public/assets/img/salaa.jpg" class="d-block w-100" alt="...">
+        <img src="public/assets/img/por_do_sol.jpeg" class="d-block w-100" alt="...">
       </div>
     </div>
 
