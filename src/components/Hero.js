@@ -19,13 +19,13 @@ export default function Hero() {
     <div class="carousel-inner shadow">
 
       <div class="carousel-item active">
-        <img src="public/assets/img/AdobeStock_1266431456.jpeg" class="d-block w-100" alt="...">
+        <img src="public/assets/img/nome.jpeg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="public/assets/img/segunda.jpg" class="d-block w-100" alt="...">
+        <img src="public/assets/img/pousada.jpeg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="public/assets/img/por_do_sol.jpeg" class="d-block w-100" alt="...">
+        <img src="public/assets/img/praia.jpg" class="d-block w-100" alt="...">
       </div>
     </div>
 

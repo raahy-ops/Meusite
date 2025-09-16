@@ -24,11 +24,15 @@ export default function renderHomePage() {
     const hero = Hero();
     divRoot.appendChild(hero);
 
+        for(var i=0; i < 3; i++ ){
+        const card = RoomCard();
+        divRoot.appendChild(card);
+    }
     
-   /* const card = RoomCard();
-    divRoot.appendChild(card);
 
-    const date = DateSelector();
+
+
+   /* const date = DateSelector();
     divRoot.appendChild(date);*/
 
 
