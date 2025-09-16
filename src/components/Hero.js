@@ -22,7 +22,7 @@ export default function Hero() {
         <img src="public/assets/img/nome.jpeg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="public/assets/img/pousada.jpeg" class="d-block w-100" alt="...">
+        <img src="public/assets/img/sacada.jpeg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
         <img src="public/assets/img/praia.jpg" class="d-block w-100" alt="...">

@@ -48,28 +48,26 @@ input:focus{
 }
 
 
-.containercard{
-    display: flex;
-flex-direction:row;
-justify-content:center;
-align-items:center;
-}
 
 .date{
-display: flex;
-flex-direction:row;
-justify-content:center;
-align-items:center;
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
 }
 
 
 #root{
     flex-direction: column;
+    gap: 10vh;
+    padding-bottom: 10vh;
+    background-color: #D4CAAE;
 }
 
 .row{
     width: 75%;
     margin-top: 40px;
+    
 }
 
 .hero-frame {
@@ -82,8 +80,8 @@ align-items:center;
     object-fit: cover;
     object-position: center; /*Centralizar o recorte da imagem*/
     height: 70vh;
-
-
+    
+    
 }
 @media(max-width: 576px) {
     .hero img, .hero{
@@ -91,3 +89,11 @@ align-items:center;
     }   
 }
 
+
+.cards{
+display: flex;
+flex-direction:row;
+justify-content:center;
+align-items:center;
+gap: 15px;
+}
