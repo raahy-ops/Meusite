@@ -1,31 +1,44 @@
 <?php
  
-require_once __DIR__ . "/../controllers/QuartoController.php";
+require_once __DIR__ . "/../controllers/RoomController.php";  
  
 if ( $_SERVER['REQUEST_METHOD'] === "GET" ){
+
     $id = $segments[2] ?? null;
  
     if(isset($id)){
-        QuartoController::getById($conn,$id);
+        RoomController::getById($conn,$id);
     }
     else{
-        QuartoController::getAll($conn);
+        RoomController::getAll($conn);
     }
 }
+
+elseif ( $_SERVER['REQUEST_METHOD'] === "POST" ){
+    $data = json_decode( file_get_contents('php://input'), true );
+    RoomController::create($conn, $data);
+
+}              //Método criar
+
+elseif ( $_SERVER['REQUEST_METHOD'] === "PUT" ){
+    $data = json_decode( file_get_contents('php://input'), true );
+    $id = $data['id'];
+    RoomController::update($conn, $id, $data);
+
+}            //Método atualizar 
+
  
-if ( $_SERVER['REQUEST_METHOD'] === "DELETE" ){
+elseif ( $_SERVER['REQUEST_METHOD'] === "DELETE" ){
     $id = $segments[2] ?? null;
  
     if(isset($id)){
-        QuartoController::delete($conn,$id);
+        RoomController::delete($conn,$id);
     }
     else{
-        jsonResponse(['message'=>"id do quarto obrigatorio"],403);
+        jsonResponse(['message'=>"id do quarto obrigatorio"], 403);
     }
- 
- 
-}
- 
+}           //Método Deletar
+
  
 else {
     jsonResponse([
@@ -34,4 +47,4 @@ else {
     ], 405);
 }
  
- 
+ ?>

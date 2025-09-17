@@ -2,28 +2,45 @@
      require_once __DIR__  ."/controllers/AuthController.php";
      require_once __DIR__  ."/controllers/RoomController.php";
      require_once __DIR__  ."/controllers/PasswordController.php";
-      require_once __DIR__  ."/helpers/token_jwt.php";
-      require_once __DIR__  ."/controllers/PasswordController.php";
+    require_once __DIR__  ."/helpers/token_jwt.php";
+    require_once __DIR__  ."/controllers/PasswordController.php";
+    require_once __DIR__ . "/controllers/ClientController.php";
 
 
-        $data = [
-           "nome" => "Quarto Elite",
-           "numero" => 18,
-           "qnt_cama_casal" => 1,
-           "qnt_cama_solteiro" => 3,
-           "preco" => 800,
-           "disponivel" => 1
+    
+    
+    /* $data = [
+      "nome" => "Quarto Elite",
+      "numero" => 18,
+      "qnt_cama_casal" => 1,
+      "qnt_cama_solteiro" => 3,
+      "preco" => 800,
+      "disponivel" => 1
+      
+      
+      ];
+      */
+      
+      
+      //RoomController::create($conn, $data);   //inserir dados 
+      //   RoomController::getAll($conn);  // busca dados
+      //RoomController::getById($conn, 19); // busca dados específicos
+      //RoomController::delete($conn, 19); // deleta dados
+      // RoomController::update($conn, 20, $data);
+      
+      
+      
+      $data = [
+          "nome" => "Clara",
+          "email" => "Clara@gmail.com",
+          "telefone" => "(15)9907-1982",
+          "cpf" => "287639121",
+          "senha" => "lçlçlç",
+          "cargo_id" => 19
+      ];
 
 
-        ];
-
-
-
-        //RoomController::create($conn, $data);   //inserir dados 
-        RoomController::getAll($conn);  // busca dados
-        //RoomController::getById($conn, 19); // busca dados específicos
-        //RoomController::delete($conn, 19); // deleta dados
-       // RoomController::update($conn, 20, $data);
+       ClientController::create($conn, $data);   //inserir criar dados 
 
        
 
