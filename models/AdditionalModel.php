@@ -1,34 +1,29 @@
 <?php
 
-class ClientModel{
-     
-    
-   
+class AdditionalModel{
+
+       
 public static function create($conn, $data){
 
-    $sql = "INSERT INTO clientes( nome, email, telefone, cpf, senha, cargo_id) VALUES (?,?,?,?,?,?)";
+    $sql = "INSERT INTO adicionais(nome, preco) VALUES (?,?)";
 
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssi",
+        $stmt->bind_param("sd",
         $data["nome"],
-        $data["email"],
-        $data["telefone"],
-        $data["cpf"],
-        $data["senha"],
-        $data["cargo_id"]
+        $data["preco"],
     );
     return $stmt->execute();
 }
 
 public static function getAll($conn){
-    $sql = "SELECT id, nome, email, telefone, cpf, cargo_id FROM clientes";
+    $sql = "SELECT * FROM adicionais";
     $result = $conn->query($sql);
     return $result->fetch_all(MYSQLI_ASSOC);   // puxa todas as informações do nosso banco de dados
 }
 
 
 public static function delete($conn, $id){
-    $sql = "DELETE FROM clientes  WHERE id = ?";
+    $sql = "DELETE FROM adicionais  WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     return $stmt->execute();
@@ -36,10 +31,10 @@ public static function delete($conn, $id){
 }
 
 public static function update($conn, $id, $data){
-    $sql = "UPDATE clientes SET nome = ?, email = ?, telefone = ?, cpf = ?, senha = ?, cargo_id = ? WHERE id = ?";
+    $sql = "UPDATE adicionais SET nome = ?, preco = ?";
 
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssii",
+        $stmt->bind_param("sdi",
             $data["nome"],
             $data["email"],
             $data["telefone"],
@@ -52,7 +47,7 @@ public static function update($conn, $id, $data){
 }
 
 public static function getById($conn, $id){
-    $sql = "SELECT id, nome, email, telefone, cpf, cargo_id FROM clientes WHERE id = ?";
+    $sql = "SELECT * FROM adicionais WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -60,12 +55,8 @@ public static function getById($conn, $id){
     return $stmt->get_result()->fetch_assoc();   // puxa todas as informações específicas
 }
 
-  
-
-
-
-
 }
+
 
 
 ?>

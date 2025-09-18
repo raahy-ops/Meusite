@@ -4,6 +4,11 @@
     class RoomController{
 
         public static function create($conn,$data){
+
+            if(! isset($data['disponével'])) {
+                return jsonResponse(['message'=>"Erro, Campo em branco!"])
+            };
+
             $result = RoomModel::create($conn,$data);
             if($result){
                 return jsonResponse(['message'=>"Quarto reservado, aproveite!"]);

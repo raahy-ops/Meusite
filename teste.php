@@ -30,18 +30,19 @@
       
       
       
-      $data = [
-          "nome" => "Clara",
-          "email" => "Clara@gmail.com",
-          "telefone" => "(15)9907-1982",
-          "cpf" => "287639121",
-          "senha" => "lçlçlç",
-          "cargo_id" => 19
+    /*  $data = [
+          "nome" => "Thais",
+          "email" => "Thais@gmail.com",
+          "telefone" => "(15)9987-5068",
+          "cpf" => "788640222",
+          "senha" => "1234",
+          "cargo_id" => 9
       ];
 
-
-       ClientController::create($conn, $data);   //inserir criar dados 
-
+*/
+     //  ClientController::create($conn, $data);   //inserir criar dados 
+    //  ClientController::getAll($conn); // Busca todos os dados da tabela
+    //  ClientController::delete($conn, 19);
        
 
 
