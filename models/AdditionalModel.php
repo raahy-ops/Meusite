@@ -31,18 +31,13 @@ public static function delete($conn, $id){
 }
 
 public static function update($conn, $id, $data){
-    $sql = "UPDATE adicionais SET nome = ?, preco = ?";
-
+        $sql = "UPDATE adicionais SET nome = ?, preco = ? WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sdi",
-            $data["nome"],
-            $data["email"],
-            $data["telefone"],
-            $data["cpf"],
-            $data["senha"],
-            $data["cargo_id"],
-            $id
-        );
+        $data["nome"],
+        $data["preco"],
+        $id
+    );
     return $stmt->execute();
 }
 

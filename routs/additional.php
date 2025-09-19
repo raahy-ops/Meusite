@@ -20,12 +20,11 @@ elseif ( $_SERVER['REQUEST_METHOD'] === "POST" ){
 
 }              //Método criar
 
-elseif ( $_SERVER['REQUEST_METHOD'] === "PUT" ){
-    $data = json_decode( file_get_contents('php://input'), true);
-    $id = $data['id'];
-    AdditionalController::update($conn, $id, $data);
-
-}            //Método atualizar 
+elseif($_SERVER['REQUEST_METHOD'] === "PUT"){
+        $data = json_decode(file_get_contents("php://input"), true);
+        $id = $data["id"] ?? null;
+        AdditionalController::update($conn, $id, $data);
+    }           //Método atualizar 
 
  
 elseif ( $_SERVER['REQUEST_METHOD'] === "DELETE" ){

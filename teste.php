@@ -43,6 +43,17 @@
      //  ClientController::create($conn, $data);   //inserir criar dados 
     //  ClientController::getAll($conn); // Busca todos os dados da tabela
     //  ClientController::delete($conn, 19);
+
+
+
+    
+
+
+    
+
+   
+  
+
        
 
 
