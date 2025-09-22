@@ -36,6 +36,7 @@ btnSearchRoom.className ='btn btn-primary';
 
 
 
+
 divDate.appendChild(dateChekIn);
 divDate.appendChild(dateChekOut);
 divDate.appendChild(guestAmount);

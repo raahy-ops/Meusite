@@ -7,7 +7,7 @@ export async function  loginRequest(email, senha) {
             "Accept": "application/json",
             "Content-Type": "application/json"
         },
-
+        
         body: JSON.stringify(dados),
       
         //  body: new URLSearchParams({ "email":email, "password":senha }).toString(),
