@@ -4,7 +4,7 @@ require_once __DIR__ . "/../models/ClientModel.php";
 require_once "PasswordController.php";
 
 class ClientController{
-    $data['senha'] = PasswordController::generateHash($data['senha']);
+   // $data ['senha'] = PasswordController::generateHash($data ['senha']);
     //Método criar
     public static function create($conn, $data){
         $hashdpassword = password_hash( $data ['senha'], PASSWORD_BCRYPT);

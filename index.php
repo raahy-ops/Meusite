@@ -18,12 +18,12 @@ require_once "helpers/response.php";
     $subRoute = $segments[1] ?? null;
 
     if ($route != "api"){
-        require __DIR__ . "/public/index.html";
-        //require "teste.php";
+        //require __DIR__ . "/public/index.html";
+        require "teste.php";
         exit;
 
     } elseif ($route === "api") {
-        if (in_array($subRoute, ["login", "room", "client", "additional"])){
+        if (in_array($subRoute, ["login", "room", "client", "additional", "order", "reservation" ])){
             require "routs/${subRoute}.php";
         } 
         else {

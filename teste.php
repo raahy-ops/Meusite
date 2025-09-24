@@ -5,6 +5,11 @@
     require_once __DIR__  ."/helpers/token_jwt.php";
     require_once __DIR__  ."/controllers/PasswordController.php";
     require_once __DIR__ . "/controllers/ClientController.php";
+     require_once __DIR__ . "/controllers/AdditionalController.php";
+      require_once __DIR__ . "/controllers/OrderController.php";
+      require_once __DIR__ . "/controllers/ReservationController.php";
+
+
 
 
     
@@ -27,6 +32,24 @@
       //RoomController::getById($conn, 19); // busca dados específicos
       //RoomController::delete($conn, 19); // deleta dados
       // RoomController::update($conn, 20, $data);
+
+      
+      
+      /*
+     $data = [
+       "nome" => "Café da Manhã Premiu",
+        "preco" => "3000"
+      ];  */
+      
+
+
+      //AdditionalController::update($conn, 29, $data);
+     //AdditionalController::create($conn, $data);   //inserir dados 
+      //AdditionalController::getAll($conn);  // busca dados
+      //AdditionalController::getById($conn, 19); // busca dados específicos
+      //AdditionalController::delete($conn, 19); // deleta dados
+     
+
       
       
       
@@ -39,10 +62,56 @@
           "cargo_id" => 9
       ];
 
+
+
+      
 */
      //  ClientController::create($conn, $data);   //inserir criar dados 
     //  ClientController::getAll($conn); // Busca todos os dados da tabela
     //  ClientController::delete($conn, 19);
+
+
+
+
+
+  /*    $data = [
+      "usuario_id" => 29,
+      "cliente_id" => 31,
+      "data" => date("Y-m-d H:i:s"),
+      "pagamento" => "DINHEIRO"
+
+      
+      
+      ]; */ 
+      
+
+
+
+
+       //  OrderController::create($conn, $data);   //inserir dados 
+       //  OrderController::getAll($conn);  // busca dados
+      //OrderController::getById($conn, 2); // busca dados específicos
+      //OrderController::delete($conn, 2); // deleta dados
+       //OrderController::update($conn, 3, $data);
+
+
+        $data = [
+          "pedido_id" => 3,
+          "quarto_id" => 20,
+          "adicional_id " => 2,
+          "fim" => date("Y-m-d H:i:s"),
+          "inicio" => date("Y-m-d H:i:s")
+
+          ]; 
+
+
+       ReservationController::create($conn, $data);   //inserir dados
+      // ReservationController::getAll($conn);  // busca dados
+      // ReservationController::getById($conn, 2); // busca dados específicos
+
+
+
+
 
 
 

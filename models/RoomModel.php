@@ -59,9 +59,6 @@ class RoomModel{
         return $stmt->execute();
     }
 
-
-
-
 }
 
 ?>

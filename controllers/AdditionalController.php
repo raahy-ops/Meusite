@@ -4,8 +4,6 @@
     class AdditionalController{
 
         public static function create($conn,$data){
-
-
             $result = AdditionalModel::create($conn,$data);
             if($result){
                 return jsonResponse(['message'=>" Adicional criado!"]);
@@ -47,8 +45,5 @@
                 return jsonResponse(['message'=>"Adicional não atualizado, algo deu errado!"], 404);
             }
         }
-
-
-
     }
 ?>
