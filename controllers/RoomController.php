@@ -4,7 +4,7 @@
     class RoomController{
 
         public static function create($conn,$data){
-
+                
             
 
             $result = RoomModel::create($conn,$data);

@@ -4,10 +4,11 @@ require_once __DIR__ . "/../models/ClientModel.php";
 require_once "PasswordController.php";
 
 class ClientController{
-   // $data ['senha'] = PasswordController::generateHash($data ['senha']);
+  
+    $password = password_hash( $data ['senha'], PASSWORD_BCRYPT);
     //Método criar
     public static function create($conn, $data){
-        $hashdpassword = password_hash( $data ['senha'], PASSWORD_BCRYPT);
+     
         $result = ClientModel::create($conn, $data);
             if($result){
             return jsonResponse(['message'=>"Cliente cadastrado, boa estádia!"]);

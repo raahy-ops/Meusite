@@ -53,24 +53,22 @@
       
       
       
-    /*  $data = [
-          "nome" => "Thais",
-          "email" => "Thais@gmail.com",
-          "telefone" => "(15)9987-5068",
-          "cpf" => "788640222",
-          "senha" => "1234",
-          "cargo_id" => 9
+     $data = [
+          "nome" => "Arthur",
+          "email" => "Arthur@gmail.com",
+          "telefone" => "(15)99787-5976",
+          "cpf" => "9056406292",
+          "senha" => "123",
+          "cargo_id" => 5
       ];
 
 
 
       
-*/
-     //  ClientController::create($conn, $data);   //inserir criar dados 
+
+      ClientController::create($conn, $data);   //inserir criar dados 
     //  ClientController::getAll($conn); // Busca todos os dados da tabela
     //  ClientController::delete($conn, 19);
-
-
 
 
 
@@ -95,19 +93,20 @@
        //OrderController::update($conn, 3, $data);
 
 
-        $data = [
+    /*    $data = [
           "pedido_id" => 3,
           "quarto_id" => 20,
-          "adicional_id " => 2,
-          "fim" => date("Y-m-d H:i:s"),
-          "inicio" => date("Y-m-d H:i:s")
+          "adicional_id" => 2,
+          "fim" => "2025-12-17 12:00:00",
+          "inicio" => "2025-09-25 14:00:00"
 
-          ]; 
+        ]; */
 
 
-       ReservationController::create($conn, $data);   //inserir dados
-      // ReservationController::getAll($conn);  // busca dados
-      // ReservationController::getById($conn, 2); // busca dados específicos
+  //    ReservationController::create($conn,$data);   //inserir dados
+   //   ReservationController::getAll($conn);  // busca dados
+   //    ReservationController::getById($conn, 3); // busca dados específicos
+   //    ReservationController::update($conn, 1, $data);
 
 
 
