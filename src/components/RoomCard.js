@@ -3,7 +3,7 @@ export default function RoomCard(index) {
     card.className = "cardContainer";
     card.innerHTML =
     //Bootstrap
-    `
+    `       
     <div class="card" style="width: 18rem;">
         <div id="carouselExampleIndicators-${index}" class="carousel slide">
             <div class="carousel-indicators">
@@ -46,7 +46,9 @@ export default function RoomCard(index) {
         </div>
     </div>
 
+
     `;
     return card;
+
 }
 

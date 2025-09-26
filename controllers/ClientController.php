@@ -5,9 +5,9 @@ require_once "PasswordController.php";
 
 class ClientController{
   
-    $password = password_hash( $data ['senha'], PASSWORD_BCRYPT);
     //Método criar
     public static function create($conn, $data){
+        $password = password_hash( $data ['senha'], PASSWORD_BCRYPT);
      
         $result = ClientModel::create($conn, $data);
             if($result){

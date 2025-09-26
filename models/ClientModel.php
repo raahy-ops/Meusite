@@ -6,7 +6,7 @@ class ClientModel{
    
 public static function create($conn, $data){
 
-    $sql = "INSERT INTO clientes( nome, email, telefone, cpf, senha, cargo_id) VALUES (?,?,?,?,?,?)";
+    $sql = "INSERT INTO clientes(nome, email, telefone, cpf, senha, cargo_id) VALUES (?,?,?,?,?,?)";
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sssssi",
