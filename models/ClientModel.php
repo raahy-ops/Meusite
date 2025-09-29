@@ -1,9 +1,10 @@
 <?php
+require_once __DIR__  ."/../controllers/PasswordController.php";
 
 class ClientModel{
      
     
-   
+
 public static function create($conn, $data){
 
     $sql = "INSERT INTO clientes(nome, email, telefone, cpf, senha, cargo_id) VALUES (?,?,?,?,?,?)";

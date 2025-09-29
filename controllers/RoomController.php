@@ -3,10 +3,19 @@
 
     class RoomController{
 
-        public static function create($conn,$data){
-                
-            
+        public static $labels = ["nome", "numero", "qnt_cama_casal", "qnt_cama_solteiro", "preco", "disponivel"];
 
+        public static function create($conn,$data){
+
+            //validar campos
+        $validar = ValidatorController::validate_data($data, self::$labels);
+
+        if( !empty($validar) ){
+            $dados = implode(", ", $validar);
+            return jsonResponse(['message'=>"Erro, Falta o campo: ".$dados], 400);
+        }
+
+                
             $result = RoomModel::create($conn,$data);
             if($result){
                 return jsonResponse(['message'=>"Quarto reservado, aproveite!"]);
@@ -48,6 +57,16 @@
                 return jsonResponse(['message'=>"Quarto não atualizado, algo deu errado!"], 404);
             }
         }
+
+
+    public static function get_available($conn, $data){
+        $result = RoomModel::get_available($conn, $data);
+        if($result){
+            return jsonResponse(['Quartos'=> $result]);
+        }else{
+            return jsonResponse(['message'=> 'ERROORRR'], 400);
+        }
+    }
 
 
 

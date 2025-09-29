@@ -13,6 +13,7 @@ export default function LoginForm() {
     const titulo = document.createElement('h1');
     titulo.textContent = 'Faça seu login';
     titulo.className = 'titulo';
+    titulo.style.color = '#5D3313 ';
     
     const formulario = document.createElement('form');
     formulario.className = 'd-flex flex-column';

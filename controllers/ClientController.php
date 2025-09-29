@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . "/../models/ClientModel.php";
-require_once "PasswordController.php";
+
 
 class ClientController{
-  
     //Método criar
     public static function create($conn, $data){
-        $password = password_hash( $data ['senha'], PASSWORD_BCRYPT);
+        
+        $data['senha'] = PasswordController::generateHash($data['senha']);
      
         $result = ClientModel::create($conn, $data);
             if($result){
