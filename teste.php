@@ -62,8 +62,6 @@
           "cargo_id" => 5
       ]; */
 
-
-
       
 
    //   ClientController::create($conn, $data);   //inserir criar dados 

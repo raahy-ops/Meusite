@@ -7,16 +7,15 @@ class ClientModel{
 
 public static function create($conn, $data){
 
-    $sql = "INSERT INTO clientes(nome, email, telefone, cpf, senha, cargo_id) VALUES (?,?,?,?,?,?)";
+    $sql = "INSERT INTO clientes(nome, email, telefone, cpf, senha) VALUES (?,?,?,?,?)";
 
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssi",
+        $stmt->bind_param("sssss",
         $data["nome"],
         $data["email"],
         $data["telefone"],
         $data["cpf"],
-        $data["senha"],
-        $data["cargo_id"]
+        $data["senha"]
     );
     return $stmt->execute();
 }
@@ -60,6 +59,25 @@ public static function getById($conn, $id){
 
     return $stmt->get_result()->fetch_assoc();   // puxa todas as informações específicas
 }
+
+
+public static function clientValidation($conn, $email, $senha) {
+        $sql = "SELECT clientes.id, clientes.email, clientes.senha, clientes.nome FROM clientes WHERE clientes.email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+ 
+        if($client = $result->fetch_assoc()) {
+       
+            if(PasswordController::validateHash($senha, $client['senha'])) {
+                unset($client['senha']);
+                return $client;  
+            }
+ 
+        return false;
+        }
+    }
 
 
 }

@@ -23,7 +23,7 @@ require_once "helpers/response.php";
         exit;
 
     } elseif ($route === "api") {
-        if (in_array($subRoute, ["login", "room", "client", "additional", "order", "reservation" ])){
+        if (in_array($subRoute, ["login", "room", "client", "additional",  "order", "reservation", "clientlogin" ])){
             require "routs/${subRoute}.php";
         } 
         else {

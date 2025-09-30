@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . "/../models/ClientModel.php";
+require_once __DIR__ . "/../helpers/token_jwt.php";
+require_once "PasswordController.php";
 
 
 class ClientController{
@@ -56,7 +58,31 @@ class ClientController{
     }
 
 
+    public static function loginClient($conn, $data) {
 
+      
+        $data['email'] = trim($data['email']);
+        $data['senha'] = trim($data['senha']);
+
+ 
+        if (empty($data['email']) || empty($data['senha'])) {
+            return jsonResponse([
+                "status" => "erro",
+                "message" => "Preencha todos os campos!"
+            ], 401);
+        }
+ 
+        $client = ClientModel::clientValidation($conn, $data['email'], $data['senha']);
+        if ($client) {
+            $token = createToken($client);
+            return jsonResponse([ "token" => $token ]);
+        } else {
+            return jsonResponse([
+                "status" => "erro",
+                "message" => "Credenciais inválidas!"
+            ], 401);
+        }
+    }
 
 
     }
