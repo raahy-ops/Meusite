@@ -3,18 +3,27 @@
 require_once __DIR__ . "/../models/ClientModel.php";
 require_once __DIR__ . "/../helpers/token_jwt.php";
 require_once "PasswordController.php";
+require_once "AuthController.php";
+
 
 
 class ClientController{
     //Método criar
     public static function create($conn, $data){
         
+        $login = [
+            "email"=> $data["email"],
+            "senha" => $data["senha"]
+        ];
+
+
         $data['senha'] = PasswordController::generateHash($data['senha']);
      
         $result = ClientModel::create($conn, $data);
             if($result){
-            return jsonResponse(['message'=>"Cliente cadastrado, boa estádia!"]);
-                    
+                
+                AuthController::loginClient($conn, $login); 
+   
         }else{
             return jsonResponse(['message'=>"cliente não cadastrado, algo deu errado!"], 404);
         }

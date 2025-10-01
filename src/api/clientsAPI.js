@@ -1,6 +1,6 @@
 export async function createRequest(nome, cpf, telefone , email, senha) {
     const dados = {nome, cpf, telefone, email, senha};
-    const response = await fetch ("api/client", {
+    const response = await fetch ("api/client",{
         method : "POST",
         headers: {
             "Accept": "applicaation/json",

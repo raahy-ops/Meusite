@@ -62,7 +62,19 @@ public static function getById($conn, $id){
 
 
 public static function clientValidation($conn, $email, $senha) {
-        $sql = "SELECT clientes.id, clientes.email, clientes.senha, clientes.nome FROM clientes WHERE clientes.email = ?";
+    
+        $sql = "SELECT 
+                clientes.id, 
+                clientes.email, 
+                clientes.senha, 
+                clientes.nome,
+                cargos.nome AS cargo
+                FROM clientes
+                INNER JOIN cargos
+                ON cargos.id = clientes.cargo_id
+                WHERE clientes.email = ? 
+            ;";
+       
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -75,12 +87,12 @@ public static function clientValidation($conn, $email, $senha) {
                 return $client;  
             }
  
-        return false;
+            return false;
         }
-    }
-
-
 }
+
+
+}       //CRUD = create, read, update, delete
 
 
 ?>
