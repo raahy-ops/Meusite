@@ -12,8 +12,8 @@ if ( $_SERVER['REQUEST_METHOD'] === "GET" ){
         }else{
             $inicio = isset($_GET['inicio']) ? $_GET['inicio'] : null;
             $fim = isset($_GET['fim']) ? $_GET['fim'] : null;
-            $qtd = isset($_GET['qtd']) ? $_GET['qtd'] : null;
-            RoomController::get_available($conn, ["inicio"=>$inicio, "fim"=>$fim, "qtd"=>$qtd]);
+            $qnt = isset($_GET['qnt']) ? $_GET['qnt'] : null;
+            RoomController::get_available($conn, ["inicio"=>$inicio, "fim"=>$fim, "qnt"=>$qnt]);
         }
     }else{
         RoomController::getAll($conn);

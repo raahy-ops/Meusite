@@ -18,7 +18,7 @@ class AuthController {
             ], 401);
         }
  
-        $user = UserModel::validateUser($conn, $data['email'], $data['password']);
+        $user = UserModel::validateUser($conn, $data['email'], $data['senha']);
         if ($user){
             $token = createToken($user);
             return jsonResponse([

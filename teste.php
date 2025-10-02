@@ -91,24 +91,32 @@
        //OrderController::update($conn, 3, $data);
 
 
-    /*    $data = [
-          "pedido_id" => 3,
+      /*  $data = [
+          "pedido_id" => 5,
           "quarto_id" => 20,
-          "adicional_id" => 2,
-          "fim" => "2025-12-17 12:00:00",
-          "inicio" => "2025-09-25 14:00:00"
+          "adicional_id" => 3,
+          "fim" => "2025-09-20 12:00:00",
+          "inicio" => "2025-09-10 14:00:00"
 
         ]; */
 
 
-  //    ReservationController::create($conn,$data);   //inserir dados
+    //  ReservationController::create($conn,$data);   //inserir dados
    //   ReservationController::getAll($conn);  // busca dados
    //    ReservationController::getById($conn, 3); // busca dados específicos
    //    ReservationController::update($conn, 1, $data);
 
 
 
+ /* $data = [
+            "qnt" => "10",
+            "fim" => "2025-12-17 12:00:00",
+            "inicio" => "2025-09-25 14:00:00"
 
+          ]; 
+
+        RoomController::get_available($conn, $data);   // Verificar reservas disponíveis 
+        */
 
 
 
@@ -125,13 +133,13 @@
 
 
 
-    //$data = [
-      //  "email" => "Rayssa@gmail.com",
-      //  "senha" =>"123"
+  //  $data = [
+   //     "email" => "Rayssa@gmail.com",
+  //      "senha" =>"123"
 
-    //];
+  //   ];
 
-    //AuthController::login($conn, $data);
+  //  AuthController::login($conn, $data);
 
    // $tokenInvalido = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNZXVzaXRlIiwiaWF0IjoxNzU2OTI2NzIyLCJleHAiOjE3NTY5MzAzMjIsInN1YiI6eyJpZCI6MjUsIm5vbWUiOiJSYXlzc2EiLCJlbWFpbCI6IlJheXNzYUBnbWFpbC5jb20iLCJjYXJnbyI6IlRJIn19.ozVGrcLowIwf8X7HFqXVqqo_Q-NTgLfOSWGDVsGzYPI";
     
