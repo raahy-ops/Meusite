@@ -72,8 +72,8 @@ class RoomModel{
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("iss", 
             $data["qnt"],
-            $data["fim"],
-            $data["inicio"]
+            $data["inicio"],
+            $data["fim"]
         );
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);

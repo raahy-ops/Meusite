@@ -3,6 +3,7 @@ import NavBar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
 import RoomCard from "../components/RoomCard.js";
 import DateSelector from "../components/DateSelector.js"
+import { listAvailableRoomsRequest } from "../api/roomsAPI.js";
 
 
 export default function renderHomePage() { 
@@ -27,6 +28,25 @@ export default function renderHomePage() {
 
     const dateSelector = DateSelector();
     divRoot.appendChild(dateSelector);
+    
+    const btnSearchRoom = dateSelector.querySelector('button');
+
+    btnSearchRoom.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const inicio = "2025-09-10";
+        const fim = "2025-09-20";
+        const qnt = 2;
+
+        try{
+            const quartos = listAvailableRoomsRequest(inicio,fim,qnt);
+            
+        }
+        catch(error) {
+            console.log(error);
+
+        }
+    });
+
 
     
     //Grupo para incorporar cada div de cada card, para aplicar display-flex
