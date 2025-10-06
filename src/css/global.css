@@ -133,6 +133,20 @@ gap: 15px;
     background-color: #7e7a6b;
     border-color: #7e7a6b;
 }
+.btn-group{
+
+     display: flex;
+    justify-content: center;
+    position: absolute;
+    top: -20px;
+    margin-right: 49px;
+    font-family: "Righteous", sans-serif;
+
+     width: 400px;
+     height: 70px;
+     
+
+}
    
 
 

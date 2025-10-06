@@ -3,14 +3,18 @@ import LoginForm from "../components/LoginForm.js";
 import NavBar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
 
+
 export default function renderLoginPage() { 
+    
     const nav = document.getElementById('navbar');
     nav.innerHTML = '';
 
     const navbar = NavBar();
     nav.appendChild(navbar);
 
-   const foot = document.getElementById('footer');
+    const foot = document.getElementById('footer');
+
+
        foot.innerHTML = '';
    
        const foote = Footer();
@@ -18,6 +22,24 @@ export default function renderLoginPage() {
 
     const formulario = LoginForm();
     const contentForm = formulario.querySelector('form');
+
+
+    // botão cadastrar para hospede e funcionário
+    
+    const btnGroup = document.createElement('div');
+    btnGroup.className = 'btn-group';
+    btnGroup.innerHTML = 
+    `
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+    <label class="btn btn-outline-light" for="btnradio1">Hospede</label>
+
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+    <label class="btn btn-outline-light" for="btnradio2">Funcionário</label>`;
+
+
+    contentForm.appendChild(btnGroup);
+
 
 
 

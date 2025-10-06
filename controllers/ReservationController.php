@@ -1,26 +1,25 @@
 <?php
-require_once "ValidatorController.php";
-require_once __DIR__ . "/../models/ReserveModel.php";
- 
-class ReserveController{
-    
-    public static function create($conn, $data){
-        ValidatorController::validate_data($data, ["pedido_id", "quarto_id", "adicional_id", "inicio", "fim"])
+    require_once __DIR__ . "/../models/ReservationModel.php";
+    require_once "ValidatorController.php";
 
-        $data["inicio"] = ValidatorController::fix_dateHour($data["inicio"], 14)
-        $data["fim"] = ValidatorController::fix_dateHour($data["fim"], 12)
+    class ReservationController{
+        public static function create($conn, $data){
+            ValidateController::validate_data($data, ["pedido_id", "quarto_id", "adicional_id", "inicio", "fim"]);
 
-        $result = ReserveModel::create($conn, $data);
-        if($result){
-            return jsonResponse(['message'=> 'Reserva Criado com sucesso']);
-        }else{
-            return jsonResponse(['message'=> 'Erro ao criar reserva!'], 400);
+            $data["inicio"] = ValidateController::fix_dateHour($data['inicio'], 14);
+            $data["fim"] = ValidateController::fix_dateHour($data['fim'], 12);
+
+            $result = ReservationModel::create($conn, $data);
+            if($result){
+                return jsonResponse(['message'=> 'Reserva criada com sucesso']);
+            }else{
+            return jsonResponse(['message'=> 'Deu merda'], 400);
+            }
         }
-    }
-   
-    public static function searchByRequest($conn, $pedido_id) {
-        $result = ReserveModel::searchByRequest($conn, $pedido_id);
-        return jsonResponse($result);
-    }  
+
+        public static function getById($conn, $id) {
+            $result = ReservationModel::getById($conn, $id);
+            return jsonResponse($result);
+        }
 }
 ?>

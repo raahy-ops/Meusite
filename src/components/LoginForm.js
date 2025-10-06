@@ -1,14 +1,22 @@
+
 export default function LoginForm() {
+
+
+
+
     const divRoot = document.getElementById('root');
     divRoot.innerHTML = '';
     divRoot.style.alignItems = "center";
     divRoot.style.height = "100vh";
 
+
+    
     const container = document.createElement('div');
     container.className = 'card p-4 shadow-lg';
     container.style.width = '100%';
     container.style.maxWidth = '400px';
     divRoot.appendChild(container);
+
 
     const titulo = document.createElement('h1');
     titulo.textContent = 'Faça seu login';
@@ -34,8 +42,10 @@ export default function LoginForm() {
     btn.className = 'btn btn-outline-primary';
     formulario.appendChild(btn); 
     
+    
     container.appendChild(titulo);
     container.appendChild(formulario);
+   
     
  
 
