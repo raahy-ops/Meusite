@@ -32,13 +32,14 @@ export default function renderLoginPage() {
     `
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-    <label class="btn btn-outline-light" for="btnradio1">Hospede</label>
+    <label class="btn btn-light" for="btnradio1">Hospede</label>
 
     <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-    <label class="btn btn-outline-light" for="btnradio2">Funcionário</label>`;
+    <label class="btn btn-light" for="btnradio2">Funcionário</label>`;
 
 
     contentForm.appendChild(btnGroup);
+    
 
 
 

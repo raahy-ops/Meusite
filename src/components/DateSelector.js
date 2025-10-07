@@ -1,6 +1,7 @@
 export default function DateSelector() {
   const divDate = document.createElement('div');
   divDate.className = 'divDate';
+
   /*Incorporar os arquivos no inner html*/
  
 const dateChekIn = document.createElement('input');
