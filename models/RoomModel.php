@@ -67,7 +67,7 @@ class RoomModel{
         AND q.id NOT IN (
             SELECT r.quarto_id
             FROM reservas r
-            WHERE (r.fim >= ? AND r.inicio <= ?));";
+            WHERE (r.fim >= ? AND r.inicio <= ?))";
         
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("iss", 
@@ -80,9 +80,5 @@ class RoomModel{
     }            // Método para verificar a disponibilidade dos quartos
 
 }
-
-
-
-
 
 ?>

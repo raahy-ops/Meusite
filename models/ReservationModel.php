@@ -5,15 +5,15 @@ class ReservationModel {
 public static function create($conn, $data) {
        
  
-        $sql = "INSERT INTO reservas (pedido_id, quarto_id, adicional_id, inicio, fim) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO reservas (pedido_id, quarto_id, adicional_id, fim, inicio ) VALUES (?, ?, ?, ?, ?)";
  
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("iiiss",
             $data['pedido_id'],
             $data['quarto_id'],
             $data['adicional_id'],
-            $data['inicio'],
-            $data['fim']
+            $data['fim'],
+            $data['inicio']
         );
  
         return $stmt->execute();

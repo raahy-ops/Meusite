@@ -13,7 +13,7 @@ export async function  listAvailableRoomsRequest({ inicio,fim,qnt }) {
     const response = await fetch(url, {
             method: "GET",
             
-        headers:{
+        headers: {
             "Accept": "application/json",
         },
         credentials: "same-origin"

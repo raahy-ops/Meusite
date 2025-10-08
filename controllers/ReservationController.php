@@ -4,10 +4,10 @@
 
     class ReservationController{
         public static function create($conn, $data){
-            ValidateController::validate_data($data, ["pedido_id", "quarto_id", "adicional_id", "inicio", "fim"]);
+            ValidatorController::validate_data($data, ["pedido_id", "quarto_id", "adicional_id", "inicio", "fim"]);
 
-            $data["inicio"] = ValidateController::fix_dateHour($data['inicio'], 14);
-            $data["fim"] = ValidateController::fix_dateHour($data['fim'], 12);
+            $data["inicio"] = ValidatorController::dateHour($data["inicio"], 14);
+            $data["fim"] = ValidatorController::dateHour($data["fim"], 12);
 
             $result = ReservationModel::create($conn, $data);
             if($result){
@@ -17,9 +17,9 @@
             }
         }
 
-        public static function getById($conn, $id) {
-            $result = ReservationModel::getById($conn, $id);
+        public static function getById($conn, $pedido_id) {
+            $result = ReservationModel::getById($conn, $pedido_id);
             return jsonResponse($result);
         }
-}
+    }
 ?>

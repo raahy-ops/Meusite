@@ -8,7 +8,7 @@
         "senha" => "121274"
     ];
 
-    AutController::login($conn, $data);
+    AuthController::login($conn, $data);
 
 
 ?>

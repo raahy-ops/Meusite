@@ -5,13 +5,14 @@ export default function RoomCard(itemCard, index = 0) {
         qnt_cama_casal,
         qnt_cama_solteiro,
         preco
-    } = itemCard || {}
+    } = itemCard || {};
 
     const title = nome;
+
     const camas = [
-        (qnt_cama_casal != null ? `${qnt_cama_casal} cama(s) de casal`: null),
-        (qnt_cama_solteiro != null ? `${qnt_cama_solteiro} cama(s) de casal`: null),
-    ].filter(Boolean).join(' - ');   
+        (qnt_cama_casal != null ? `${qnt_cama_casal} cama(s) de casal` : null),
+        (qnt_cama_solteiro != null ? `${qnt_cama_solteiro} cama(s) de solteiro` : null),
+    ].filter(Boolean).join(' - ');
 
 
     const card = document.createElement('div');
@@ -55,11 +56,11 @@ export default function RoomCard(itemCard, index = 0) {
         
         <div class="card-body">
             <h5 class="card-title">${title}</h5>
-            <ul class= list-unstyled mb-2">
-            ${camas? `<li>${camas}`: ""}
-            ${preco !=null ? `<li> Preco: R$ ${Number(preco).toFixed(2)}</li>`: ""}
+            <ul class=list-unstyled mb-2">
+                ${camas? `<li>${camas}` : ""}
+                ${preco != null ? `<li>Preco: R$ ${Number(preco).toFixed(2)}</li>` : ""}
             </ul>
-            <a href="#" class="btn btn-outline-primary">Reservar</a>
+            <a href="#" class="btn btn-primary">Reservar</a>
         </div>
     </div>
 
