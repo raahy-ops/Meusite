@@ -14,10 +14,18 @@ if ( $_SERVER['REQUEST_METHOD'] === "GET" ){
     }
 }
 
-elseif ( $_SERVER['REQUEST_METHOD'] === "POST" ){
-    $data = json_decode( file_get_contents('php://input'), true );
-    OrderController::create($conn, $data);
+if ( $_SERVER['REQUEST_METHOD'] === "POST" ){
+    $opcao = $segments[2] ?? null;
 
+    $data = json_decode( file_get_contents('php://input'), true );
+    
+    if($opcao == "reservation"){
+        OrderController::createOrder( $conn, $data );
+    }
+    else{
+        OrderController::create( $conn, $data );
+    }
+   
 }              //Método criar
 
 elseif ( $_SERVER['REQUEST_METHOD'] === "PUT" ){

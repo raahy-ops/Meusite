@@ -90,13 +90,6 @@ export default function renderHomePage() {
         }
     });
     
-    
-    for (var i=0; i < 3; i++) {
-        const cards = RoomCard(i);
-        cardsGroup.appendChild(cards);
-    }
-    
-
     divRoot.appendChild(cardsGroup);
 
 
