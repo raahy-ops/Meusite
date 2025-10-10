@@ -4,6 +4,7 @@ import Footer from "../components/Footer.js";
 import RoomCard from "../components/RoomCard.js";
 import DateSelector from "../components/DateSelector.js"
 import { listAvailableRoomsRequest } from "../api/roomsAPI.js";
+import CardLounge from "../components/CardLounge.js";
 
 
 export default function renderHomePage() { 
@@ -14,11 +15,11 @@ export default function renderHomePage() {
     const navbar = NavBar();
     nav.appendChild(navbar);
 
-   /* const foot = document.getElementById('footer');
+    const foot = document.getElementById('footer');
     foot.innerHTML = '';
 
     const foote = Footer();
-    foot.appendChild(foote);*/
+    foot.appendChild(foote);
 
 
     const divRoot = document.getElementById('root');
@@ -39,6 +40,11 @@ export default function renderHomePage() {
     const cardsGroup = document.createElement('div');
     cardsGroup.className = "cards";
     cardsGroup.id = "cards-result";
+
+    //card com a infraestruttura do hotel
+    const cardLounge = CardLounge();
+    cardsGroup.appendChild(cardLounge);
+
    
 
 

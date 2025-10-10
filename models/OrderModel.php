@@ -97,22 +97,27 @@ public static function getById($conn, $id){
                 }
                 //criar método na classe reserveModel para avaliar o quarto se ele esta disponivel no intervalo de datas ou nõa
                 //ReservaModel::isConflict();
-                $reserveResult = ReservationModel::create($conn[
+                $reserveResult = ReservationModel::create($conn, [
                     "pedido_id" => $order_id,
+                    "quarto_id" =>$id,
+                    "adicional_id" => null,
+                    "inicio" => $inicio,
+                    "fim" => $fim,
+
                 ]);
                 $reservou = true;
                 $reservas[] = [
-                    "reserva_id"=> $conn->$insert_id,
+                    "reserva_id"=> $conn->insert_id,
                     "quarto_id"=> $id
                 ];
             }
             if($reservou == true){
                 $conn->commit();
                 return[
-                    ""
-                    ""
-                    ""
-                ]
+                    "pedido_id" => $order_id,
+                    "reservas" => $reservas,
+                    "message" => "Reservas criadas com sucesso!"
+                ];
             }else{
                 throw new RuntimeException("Pedido não realizado, nenhum quarto reservado!!");
             }
