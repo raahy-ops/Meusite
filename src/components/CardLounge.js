@@ -11,7 +11,7 @@ export default function CardLounge(cardLoungeitem, index = 0){
     
     `
     <div class="card" style="width: 18rem;">
-        <img src="public/assets/img/${path}" class="card-img-top" alt="...">
+        <img src="public/assets/img/${path}"style="height: 15rem" class="card-img-top" alt="...">
   
         <div class="btn-group dropup">
             <button type="button" class="btn" 

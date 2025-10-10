@@ -41,9 +41,23 @@ export default function renderHomePage() {
     cardsGroup.className = "cards";
     cardsGroup.id = "cards-result";
 
-    //card com a infraestruttura do hotel
-    const cardLounge = CardLounge();
-    cardsGroup.appendChild(cardLounge);
+
+    //para aparecer lounge
+    const loungeItems = [
+        {path: "restaurante.jpg", title: "Restaurante", text: "Nosso restaurante é um espaço"},
+
+        {path: "segundorestaurante.jpg", title: "Cafeteria Aurora", text: "Nossa Cafeteria é ideal " + "Para passar o fim de tarde!!"},
+
+        {path: "quiosque.jpg", title: "Quiosque Aurora", text: "Nossa Cafeteria é ideal " + "Para passar o fim de tarde!!"}
+
+    ];
+
+    for(let i = 0; i < loungeItems.length; i++){
+        const cardLounge = CardLounge(loungeItems[i], i);
+        cardsGroup.appendChild(cardLounge);
+
+    }
+
 
    
 
