@@ -6,6 +6,7 @@ export default function DateSelector() {
  
 const dateChekIn = document.createElement('input');
 dateChekIn.type = 'date';
+dateChekIn.min = 
 dateChekIn.className = 'card p-3 shadow-lg inputDate';
 dateChekIn.style.width = '200px'; 
 dateChekIn.style.maxWidth = '200px';

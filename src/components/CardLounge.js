@@ -14,7 +14,7 @@ export default function CardLounge(cardLoungeitem, index = 0){
         <img src="public/assets/img/${path}"style="height: 15rem" class="card-img-top" alt="...">
   
         <div class="btn-group dropup">
-            <button type="button" class="btn" 
+            <button type="button" class="btn btn-bege" 
                 data-bs-toggle="dropdown" aria-expanded="false" style="border: none";>
                 <img src="public/assets/img/seta.svg" width="20" height="20">
                 <h3 class="card-text" style="font-size: 1rem;font-weight: 700;">${title}</h3>

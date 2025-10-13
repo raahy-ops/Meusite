@@ -17,20 +17,19 @@ class RoomModel{
         return $stmt->execute();
     }
 
-    public static function getAll($conn){
-            $sql = "SELECT * FROM quartos";
-            $result = $conn->query($sql);
-            return $result->fetch_all(MYSQLI_ASSOC);   // puxa todas as informações do nosso banco de dados
+     public static function getAll($conn){
+        $sql = "SELECT * FROM quartos";
+        $result = $conn->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 
-    public static function getById($conn, $id){
-            $sql = "SELECT * FROM quartos WHERE id = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-
-            return $stmt->get_result()->fetch_assoc();   // puxa todas as informações específicas
+     public static function getById($conn, $id){
+        $sql = "SELECT * FROM quartos WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc();
     }
 
      public static function delete($conn, $id){
@@ -73,8 +72,7 @@ class RoomModel{
         $stmt->bind_param("iss", 
             $data["qnt"],
             $data["inicio"],
-            $data["fim"]
-        );
+            $data["fim"]);
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }            // Método para verificar a disponibilidade dos quartos
@@ -82,14 +80,12 @@ class RoomModel{
     public static function lockById($conn, $id){
         $sql = "SELECT id FROM quartos WHERE id=? FOR UPDATE";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $id); 
+        $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result && $result->num_rows > 0;
         $stmt->close();
         return $row;
-
-
     }
 }
 
