@@ -33,10 +33,14 @@ export default function renderHomePage() {
     divRoot.appendChild(dateSelector);
     
     //Criar constante que armazena o valor da data 
-    const dateToday = new Date().toISOString.split("T")[0];
+    const dateToday = new Date().toISOString().split("T")[0];
+
     const [dateCheckIn, dateCheckOut] = dateSelector.querySelectorAll('input[type="date"]');
+
     dateCheckIn.min = dateToday;
     dateCheckOut.min = dateToday;
+
+    
 
 
 
@@ -73,6 +77,8 @@ export default function renderHomePage() {
         cardsGroupInfra.appendChild(cardLounge);
     }
 
+    
+
     function getMinDateCheckout(dateCheckIn){
         const minDaily = new Date(dateCheckIn);
         minDaily.setDate(minDaily.getDate() + 1);
@@ -81,11 +87,32 @@ export default function renderHomePage() {
 
     //evento para monitorar a alteração na data de checkin para mudar o calendario 
     dateCheckIn.addEventListener('change', async (e) => {
-            if(this.value) {
-                const minDateCheckout = getMinDateCheckOut(this.value)
+            if(dateCheckIn.value) {
+                const minDateCheckout = getMinDateCheckout(dateCheckIn.value)
                 dateCheckOut.min = minDateCheckout;
+            
+            if(dateCheckOut.value && dateCheckOut.value <= dateCheckIn.value){
+                dateCheckOut.value = "";
+                alert("A data de check-out deve ser posterior ao check-in!");
+                
+
+            }
         }
-    })
+    });
+
+    /*dateCheckOut.addEventListener('change', async (e) => {
+        if(dateCheckIn.value && dateCheckOut.value){
+            const checkInValue = new Date(dateCheckIn.value); 
+            const checkOutValue = new Date(dateCheckOut.value);
+
+            if(checkOutValue <= checkInValue){
+                dateCheckOut.value = "";
+                alert("A data de check-out deve ser posterior a de check-in! ");
+            }
+                
+        }
+    });*/
+
 
 
 
@@ -101,7 +128,7 @@ export default function renderHomePage() {
 
         //Validação do preenchimento de infos
         if (!inicio || !fim || Number.isNaN(qnt) || qnt <= 0) {
-            console.log("Preencha todos os campos!");
+            alert("Preencha todos os campos!");
 
            // $('#modalErro').modal('show');
            
@@ -111,19 +138,7 @@ export default function renderHomePage() {
             return;
         }
 
-        /*OBS.: falta impedir que o usuário pesquise por uma data passada!*/
-        const dtInicio = new Date(inicio);
-        const dtFim = new Date(fim);
-
-    
-        
-
-        if (isNaN(dtInicio) || isNaN(dtFim) || dtInicio >= dtFim) {
-            console.log("A data de check-out deve ser posterior ao check-in!");
-            /* Tarefa 2: Renderizar nesse if() posteriormente um modal do bootstrap!
-            https://getbootstrap.com/docs/5.3/components/modal/ */
-            return;
-        }
+       
         
 
         console.log("Buscando quartos disponíveis...");

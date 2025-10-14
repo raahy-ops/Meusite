@@ -5,8 +5,7 @@ export default function DateSelector() {
   /*Incorporar os arquivos no inner html*/
  
 const dateChekIn = document.createElement('input');
-dateChekIn.type = 'date';
-dateChekIn.min = 
+dateChekIn.type = 'date';  
 dateChekIn.className = 'card p-3 shadow-lg inputDate';
 dateChekIn.style.width = '200px'; 
 dateChekIn.style.maxWidth = '200px';
