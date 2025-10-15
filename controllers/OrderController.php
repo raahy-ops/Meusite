@@ -2,6 +2,7 @@
     require_once __DIR__ . "/../models/OrderModel.php";
     require_once "ValidatorController.php";
 
+
     class OrderController{
 
 
@@ -50,27 +51,38 @@
 
         
         
-         public static function createOrder($conn,$data){
+        public static function createOrder($conn,$data){
           
-            $data["usuario_id"] = isset($data["usuario_id"]) ? $data['usuario_id'] : null;
+            $data["usuario_id"] = isset($data["usuario_id"]) ? $data['usuario_id'] : 25;
 
             ValidatorController::validate_data($data,["cliente_id", "pagamento", "quartos"]);
 
 
          foreach($data ['quartos'] as  $quarto){
-            ValidatorController::validate_data($quarto,["id", "fim", "inicio"]);
+            ValidatorController::validate_data($quarto,["id", "inicio", "fim"]);
 
+            $quarto["inicio"] = ValidatorController::dateHour($quarto["inicio"], 14);
+
+            $quarto["fim"] = ValidatorController::dateHour($quarto["fim"], 12);
+ 
         }
 
         if (count($data["quartos"]) == 0){
             return jsonResponse(["message"=> "Reservas não existem!!!"], 400);
             
         }
+        try{
+            $resultado = OrderModel::createOrder($conn, $data);
+            return jsonResponse(["message"=> $resultado]);
+
+        }catch(\Throwable $erro){
+            
+            return jsonResponse(["message"=> $erro->getMessage()], 500);
         // OrderModel::createOrder($conn,data);
     }
         
 
-
+        }
 
     }
 ?>

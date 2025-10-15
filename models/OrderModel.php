@@ -1,5 +1,5 @@
 <?php
-
+require_once "models/ReservationModel.php";
 require_once "RoomModel.php";
 
 
@@ -7,7 +7,7 @@ class OrderModel{
     
 public static function create($conn, $data){
 
-    $sql = "INSERT INTO pedidos( usuario_id, cliente_id, pagamento) VALUES (?,?,?,?)";
+    $sql = "INSERT INTO pedidos( usuario_id, cliente_id, pagamento) VALUES (?,?,?)";
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("iis",
@@ -61,78 +61,79 @@ public static function getById($conn, $id){
 }
 
 
-    public static function createOrder($conn,$data){
-        $cliente_id = $data['cliente_id'];
-        $pagamento = $data['pagamento'];
-        $usuario_id  = $data['usuario_id'];
-        $reservas =[];
-        $reservou = false;
-
-        $conn->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
-
-
-        try {
-           
-            $order_id = self::create($conn, [
-                
-                "usuario_id" => $usuario_id,
-                "cliente_id" => $cliente_id,
-                "pagamento" => $pagamento
-            ]);
+    public static function createOrder($conn, $data){
+            $cliente_id = $data['cliente_id'];
+            $pagamento = $data['pagamento'];
+            $usuario_id = $data['usuario_id'];
             
-            if(!$order_id){
-                throw new RuntimeException("Erro ao criar o pedido.");
-            }
+            $reservas = [];
+            $reservou = false;
 
-            foreach($data ['quartos'] as  $quarto){
-                $id = $quarto['id'];
-                $inicio = $quarto['inicio'];
-                $fim = $quarto['fim'];
+            $conn->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
 
-                //garantia de existir e bloquear 
-                if(!RoomModel::lockById($conn,$id)){
-
-                    $reservas[] =  "Quarto{$id} indisponível";
-                    continue;
-                }
-                //criar método na classe reserveModel para avaliar o quarto se ele esta disponivel no intervalo de datas ou nõa
-                //ReservaModel::isConflict();
-                $reserveResult = ReservationModel::create($conn, [
-                    "pedido_id" => $order_id,
-                    "quarto_id" =>$id,
-                    "adicional_id" => null,
-                    "inicio" => $inicio,
-                    "fim" => $fim,
-
-                ]);
-                $reservou = true;
-                $reservas[] = [
-                    "reserva_id"=> $conn->insert_id,
-                    "quarto_id"=> $id
-                ];
-            }
-            if($reservou == true){
-                $conn->commit();
-                return[
-                    "pedido_id" => $order_id,
-                    "reservas" => $reservas,
-                    "message" => "Reservas criadas com sucesso!"
-                ];
-            }else{
-                throw new RuntimeException("Pedido não realizado, nenhum quarto reservado!!");
-            }
-
-            
-        } catch (\Throwable $th) {
             try {
-                $conn->rollback();
-            
-            } catch (\Throwable $th2) {
+                $order_id = self::create($conn, [
+                    "usuario_id" => $usuario_id,
+                    "cliente_id" => $cliente_id,
+                    "pagamento" => $pagamento
+                ]);
+                if(!$order_id){
+                    throw new RuntimeException("Erro ao criar o pedido.");
+                }
+
+                foreach($data['quartos'] as $quarto){
+                    $id = $quarto["id"];
+                    $inicio = $quarto["inicio"];
+                    $fim = $quarto["fim"];
+
+                    // garantir que existe e bloquear
+                    if (!RoomModel::lockById($conn, $id) ){
+                        $reservas[] = "Quarto {$id} indisponivel!";
+                        continue;
+                    }
+
+
+                    // criar um metodo na classe ReserveModel
+                    // para avaliar se o quarto esta disponivel 
+                    // no intervalo de datas
+                    // ReserveModel::isConflict();
+                    if ( !ReservationModel::isQuartoDisponivel($conn, $id, $inicio,$fim)){
+                        $reservas[] = "Quarto {$id} já está reservado!";
+                        continue;
+                    }
+
+
+                    $reserverResult = ReservationModel::create($conn,[
+                        "pedido_id" => $order_id,
+                        "quarto_id" => $id,
+                        "adicional_id" => 15,
+                        "inicio" => $inicio,
+                        "fim" => $fim,
+                    ]);
+
+                    $reservou = true;
+                    $reservas[] = [
+                        "reserva_id" => $conn->insert_id,
+                        "quarto_id" => $id
+                    ];
+                }
+                if($reservou == true){
+                    $conn->commit();
+                    return [
+                        "pedido_id" => $order_id,
+                        "reservas" => $reservas,
+                        "messagem" => "Reservas criadas com sucesso!!"
+                    ];
+                }else{
+                    throw new RuntimeException("Pedido nao realizado, nenhum quarto reservado");
+                }
+
+            } catch (\Throwable $th) {
+                try {
+                    $conn->rollback();
+                } catch (\Throwable $th2) {}
                 throw $th;
             }
-            //throw $th;
-        }
-
     }
         
 

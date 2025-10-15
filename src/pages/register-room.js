@@ -20,20 +20,10 @@ export default function renderResgisterRoom(){
     Form.appendChild(formroom);
 
 
-    
-
-   
-
-
     //Root (corpo da página)
     const divRoot = document.getElementById('root');
     divRoot.innerHTML = '';
 
-
-
     //footer
-
-
-
 
 }
