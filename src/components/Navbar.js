@@ -41,10 +41,19 @@ export default function NavBar() {
         <a class="nav-link" href="login" >Login</a>
         </li>
 
+        
+        <li class="nav-item">
+            <a class="nav-link" href="register-room" >Registrar Quartos</a>
+        </li>
+
       </ul>
+
+
       <div>
-         <a href="cart"><img src ="public/assets/img/cart4.svg" style = "width: 30px; heigth:30px;">
+         <a href="cart"><img src ="public/assets/img/cart4.svg" style = "width: 30px; heigth:30px;"></a>
       </div>
+
+
     </div>
   </div >
 </nav >`;
