@@ -1,16 +1,25 @@
 import NavBar from "../components/Navbar.js";
 import Table from "../components/Table.js";
+import Footer from "../components/Footer.js";
 //Importar componentes footer
 
 export default function renderCartPage(){
     
-    
-    //NavBar
-    const nav =  document.getElementById('navbar');
-    nav.innerHTML = '';
-    const navbar = NavBar();
-    nav.appendChild(navbar);
-
+    const nav = document.getElementById('navbar');
+            nav.innerHTML = '';
+        
+            const navbar = NavBar();
+            nav.appendChild(navbar);
+        
+            const foot = document.getElementById('footer');
+            foot.innerHTML = '';
+        
+            const foote = Footer();
+            foot.appendChild(foote);
+        
+        
+            const divRoot = document.getElementById('root');
+            divRoot.innerHTML = '';
 
     //Grid, coluna
  
@@ -18,20 +27,5 @@ export default function renderCartPage(){
     divTable.innerHTML = '';
     const  table = Table();
     divTable.appendChild(table);
-
-
-
-
-
-    //Root (corpo da página)
-    const divRoot = document.getElementById('root');
-    divRoot.innerHTML = '';
-
-
-
-    //footer
-
-
-
 
 }

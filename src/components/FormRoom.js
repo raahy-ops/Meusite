@@ -1,7 +1,6 @@
 export default function FormRoom(){
 
 
-    
 
     const divRoot = document.getElementById('root');
     divRoot.innerHTML = '';
@@ -17,36 +16,24 @@ export default function FormRoom(){
     divRoot.appendChild(container);
 
 
-    const titulo = document.createElement('h1');
-    titulo.textContent = 'Faça seu login';
-    titulo.className = 'titulo';
-    titulo.style.color = '#5D3313 ';
-    
+   const label = document.createElement('div');
+   label.innerHTML = 
+            `<div class="form-floating mb-3">
+    <input type="text" class="form-control" id="floatingInput" placeholder="Nome do Quarto">
+    <label for="floatingInput">Digite o nome do Quarto</label>
+    </div>`;
+
+   
+
     const formulario = document.createElement('form');
     formulario.className = 'd-flex flex-column';
 
-    const email = document.createElement('input');
-    email.type = 'email';
-    email.placeholder = "Digite seu e-mail";
-    formulario.appendChild(email);
-
-    const password = document.createElement('input');
-    password.type = 'password';
-    password.placeholder = "Digite sua senha";
-    formulario.appendChild(password);
-
-    const btn = document.createElement('button');
-    btn.type = 'submit';
-    btn.textContent = "Entrar";
-    btn.className = 'btn btn-outline-primary';
-    formulario.appendChild(btn); 
-    
-    
-    container.appendChild(titulo);
+    container.appendChild(label);
     container.appendChild(formulario);
-   
-    
- 
+
 
     return divRoot;
+
+
+   
 }

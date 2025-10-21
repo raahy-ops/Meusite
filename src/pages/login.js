@@ -13,9 +13,7 @@ export default function renderLoginPage() {
     nav.appendChild(navbar);
 
     const foot = document.getElementById('footer');
-
-
-       foot.innerHTML = '';
+    foot.innerHTML = '';
    
        const foote = Footer();
        foot.appendChild(foote);
