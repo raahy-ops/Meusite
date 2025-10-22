@@ -1,5 +1,5 @@
 <?php
-require_once "models/ReservationModel.php";
+require_once "ReservationModel.php";
 require_once "RoomModel.php";
 
 
@@ -7,14 +7,14 @@ class OrderModel{
     
 public static function create($conn, $data){
 
-    $sql = "INSERT INTO pedidos( usuario_id, cliente_id, pagamento) VALUES (?,?,?)";
+    $sql = "INSERT INTO pedidos (usuario_id, cliente_id, pagamento ) VALUES (?,?,?)";
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("iis",
         $data["usuario_id"],
         $data["cliente_id"],
         $data["pagamento"]
-    );
+        );
     $resultado = $stmt->execute();
     if($resultado){
         return $conn->insert_id;

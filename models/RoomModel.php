@@ -14,7 +14,10 @@ class RoomModel{
             $data["preco"],
             $data["disponivel"]
         );
-        return $stmt->execute();
+        if($stmt->execute()){
+        return $stmt->insert_id();
+        }
+        return false;
     }
 
      public static function getAll($conn){

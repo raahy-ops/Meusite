@@ -26,11 +26,12 @@ require_once __DIR__ . "/../controllers/RoomController.php";
     }
 
 
-elseif ( $_SERVER['REQUEST_METHOD'] === "POST" ){
-    $data = json_decode( file_get_contents('php://input'), true );
-    RoomController::create($conn, $data);
+    elseif ( $_SERVER['REQUEST_METHOD'] === "POST" ){
+        $data = $_POST;
+        $data['fotos'] = $_FILES['fotos'] ?? null;
+        RoomController::create($conn, $data);
 
-}              //Método criar
+    }              //Método criar
 
 
 elseif ( $_SERVER['REQUEST_METHOD'] === "PUT" ){

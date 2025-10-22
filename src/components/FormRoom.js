@@ -18,10 +18,18 @@ export default function FormRoom(){
 
    const label = document.createElement('div');
    label.innerHTML = 
-            `<div class="form-floating mb-3">
+            `
+    <div class="form-floating mb-3">
     <input type="text" class="form-control" id="floatingInput" placeholder="Nome do Quarto">
     <label for="floatingInput">Digite o nome do Quarto</label>
-    </div>`;
+    </div>
+
+      <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="floatingInput" placeholder="Nome do Quarto">
+    <label for="floatingInput">Digite o numero do Quarto</label>
+    </div>
+
+    `;
 
    
 
