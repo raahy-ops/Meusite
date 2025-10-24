@@ -10,7 +10,7 @@ const routes = {
     "/cadastro": renderRegisterPage,
     "/home": renderHomePage,
    "/cart": renderCartPage,
-   "/register-room": renderResgisterRoom,
+   "/register-room": renderResgisterRoom
     //Novas páginas adicionadas conforme desenvolvidas
 };
  

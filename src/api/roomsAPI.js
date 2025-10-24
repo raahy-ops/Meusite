@@ -1,4 +1,28 @@
+export async function addRoom(contentForm) {
+    const formData = new FormData(contentForm);
+    const typeAccept = ['image/jpeg', 'image/png'];
+    const inputFotos = contentForm.querySelector('#formFileMultiple');
+    const imgs = inputFotos.files;
+    for(let i = 0; i < imgs.length; i++){
+        if(!typeAccept.includes(imgs[i].type)){
+            throw new Error (`Arquivo " ${imgs[1].name}" não é suportado.
+                Selecione um Arquivo JPG ou PNG`);
+        }
+    }
+    const url = `api/rooms`;
+    const response = await fetch(url, {
+        method: "POST",
+        body: formData
+    });
+    if(!response.ok){
+        throw new Error(`Erro ao enviar requissição: ${response.status}`);
 
+    }
+
+    const result = await response.json();
+    return result;
+
+}
 /*Listar todos os quartos, independente do filtro*/
 
 export async function  listAvailableRoomsRequest({ inicio, fim, qnt }) {

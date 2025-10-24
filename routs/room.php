@@ -10,6 +10,7 @@ require_once __DIR__ . "/../controllers/RoomController.php";
         if (isset($id)){
             if (is_numeric($id)){
                 RoomController::getById($conn, $id);
+
             }elseif($id === "disponiveis"){
                 $data = [
                     "inicio"=> isset($_GET['inicio']) ? $_GET['inicio'] : null,
@@ -18,7 +19,7 @@ require_once __DIR__ . "/../controllers/RoomController.php";
                 ];
                 RoomController::get_available($conn, $data);
             }else{
-                return jsonResponse(['message'=>"Rota não identificada"],403);
+                return jsonResponse(['message'=>"Rota não identificada"],400);
             }
         }else{
             RoomController::getAll($conn);

@@ -7,7 +7,7 @@
     class RoomController{
 
      
-        public static function create($conn,$data){
+        public static function create($conn, $data){
 
             //validar campos
          ValidatorController::validate_data($data,["nome", "numero", "qnt_cama_casal", "qnt_cama_solteiro", "preco", "disponivel"]);
@@ -26,10 +26,10 @@
                     }
 
                 }
-                return jsonResponse(['message'=>"Quarto reservado, aproveite!"]);
+                return jsonResponse(['message'=>"Quarto criado, aproveite!"]);
                 
             }else{
-                return jsonResponse(['message'=>"Quarto não reservado, algo deu errado!"], 404);
+                return jsonResponse(['message'=>"Quarto não criado, algo deu errado!"], 40);
             }
 
         }
@@ -61,7 +61,7 @@
         public static function update($conn, $id, $data){
             
             //validar campos
-            ValidatorController::validate_data($data,["nome", "nome", "qnt_cama_casal", "qnt_cama_solteiro", "preco", "disponivel"]);
+            ValidatorController::validate_data($data,["nome", "numero", "qnt_cama_casal", "qnt_cama_solteiro", "preco", "disponivel"]);
 
             $result = RoomModel::update($conn, $id, $data);
             if($result){
@@ -83,6 +83,9 @@
         
         $result = RoomModel::get_available($conn, $data);
         if($result){
+            foreach ($result as &$quarto) {
+                $quarto['imagens'] = PhotoModel::getByRoomId($conn, $quarto['id']);
+            }
             return jsonResponse(['Quartos'=> $result]);
         }else{
             return jsonResponse(['message'=> 'não tem quartos disponiveis'], 400);

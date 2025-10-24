@@ -24,7 +24,7 @@ require_once "helpers/token_jwt.php";
         exit;
 
     } elseif ($route === "api") {
-        if (in_array($subRoute, ["login", "room", "client", "additional",  "order", "reservation", "pictures" ])){
+        if (in_array($subRoute, ["login", "room", "client", "additional",  "order", "reservation", "pictures"])){
             require "routs/${subRoute}.php";
         } 
         else {

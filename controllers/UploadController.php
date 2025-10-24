@@ -73,10 +73,11 @@ class UploadController {
             ];
             
         }
+
         return [
             "files" => $files, 
             "errors" => $errors, 
-             "saves" => $saves];
+            "saves" => $saves];
     }
 }
 
