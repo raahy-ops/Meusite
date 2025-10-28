@@ -16,10 +16,7 @@ export default function NavBar() {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" aria-current="page" href="home"><i class="bi bi-house text-dark"></i><span class="ms-2">Home</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,29 +31,30 @@ export default function NavBar() {
         </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="cadastro" >Cadastre-se</a>
+        <a class="nav-link" href="cadastro"><i class="bi bi-person-add text-dark"></i><span class="ms-2">Cadastre-se</span></a>
         </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="login" >Login</a>
+        <a class="nav-link" href="login"><i class="bi bi-person-lock text-dark"></i><span class="ms-2">Login</span></a>
         </li>
 
         
         <li class="nav-item">
-            <a class="nav-link" href="register-room" >Registrar Quartos</a>
+            <a class="nav-link" href="register-room"><i class="bi bi-lamp text-dark"></i><span class="ms-2">Registrar Quartos</span></a>
         </li>
-
       </ul>
 
-
       <div>
-         <a href="cart"><img src ="public/assets/img/cart4.svg" style = "width: 30px; heigth:30px;"></a>
+         <a href="cart">
+          <i class="bi bi-suitcase-lg fs-5 text-dark ms-2"></i></a>
       </div>
-
 
     </div>
   </div >
 </nav >`;
+
+
+
 
 return navbar;
 }

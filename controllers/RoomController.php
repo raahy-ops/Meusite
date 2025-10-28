@@ -83,8 +83,8 @@
         
         $result = RoomModel::get_available($conn, $data);
         if($result){
-            foreach ($result as &$quarto) {
-                $quarto['imagens'] = PhotoModel::getByRoomId($conn, $quarto['id']);
+            foreach ($result as $quarto) {
+                $quarto ['fotos'] = PhotoModel::getByRoomId($conn, $quarto['id']);
             }
             return jsonResponse(['Quartos'=> $result]);
         }else{

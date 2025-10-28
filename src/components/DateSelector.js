@@ -21,24 +21,24 @@ export default function DateSelector() {
 
   /*Incorporar os arquivos no inner html*/
  
-const dateChekIn = document.createElement('input');
-dateChekIn.type = 'date';  
-dateChekIn.className = 'form-control rounded-pill shadow-lg';
-dateChekIn.style.width = '200px';
-dateChekIn.style.height = '45px';
-dateChekIn.style.textAlign = 'center';
-dateChekIn.style.marginTop = '15px';
+const dateCheckIn = document.createElement('input');
+dateCheckIn.type = 'date';  
+dateCheckIn.className = 'form-control rounded-pill shadow-lg';
+dateCheckIn.style.width = '200px';
+dateCheckIn.style.height = '45px';
+dateCheckIn.style.textAlign = 'center';
+dateCheckIn.style.marginTop = '15px';
 
 
 
 
-const dateChekOut = document.createElement('input');
-dateChekOut.type = 'date';
-dateChekOut.className = 'form-control rounded-pill shadow-lg';
-dateChekOut.style.width = '200px';
-dateChekOut.style.height = '45px';
-dateChekOut.style.textAlign = 'center';
-dateChekOut.style.marginTop = '15px';
+const dateCheckOut = document.createElement('input');
+dateCheckOut.type = 'date';
+dateCheckOut.className = 'form-control rounded-pill shadow-lg';
+dateCheckOut.style.width = '200px';
+dateCheckOut.style.height = '45px';
+dateCheckOut.style.textAlign = 'center';
+dateCheckOut.style.marginTop = '15px';
 
 
 
@@ -67,15 +67,9 @@ style = "width: 50px; heigth: 50px;"><i class="bi bi-search"></i>
 
 
 
-
-
-
-
-
-
 // Adiciona os elementos ao container
-  container.appendChild(dateChekIn);
-  container.appendChild(dateChekOut);
+  container.appendChild(dateCheckIn);
+  container.appendChild(dateCheckOut);
   container.appendChild(guestAmount);
   container.appendChild(btnSearchRoom);
 

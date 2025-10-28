@@ -45,6 +45,13 @@ export default function renderHomePage() {
 
 
     const guestAmount = dateSelector.querySelector('select');
+
+    dateCheckIn.id = 'id-dateCheckIn';
+    dateCheckOut.id = 'id-dateCheckOut';
+    guestAmount.id = 'id-guestAmount';
+
+
+
     const btnSearchRoom = dateSelector.querySelector('button');
 
     //Grupo para incorporar cada div de cada card, para aplicar display-flex
@@ -145,14 +152,10 @@ export default function renderHomePage() {
         /* Tarefa 3: Renderizar na tela um símbolo de loading (spinner do bootstrap)!
         https://getbootstrap.com/docs/5.3/components/spinners/ */
 
-        try {
+         try {
             const result = await listAvailableRoomsRequest({inicio, fim, qnt });
             if (!result.length) {
                 console.log("Nenhum quarto disponível para esse período!");
-             
-
-
-
                 /* Tarefa 4: Renderizar nesse if() posteriormente um modal do bootstrap!
                 https://getbootstrap.com/docs/5.3/components/modal/ */
                 return;
@@ -161,6 +164,7 @@ export default function renderHomePage() {
             result.forEach((itemCard, i) => {
                 cardsGroup.appendChild(RoomCard(itemCard, i));
             });
+            
         } 
         catch(error) {
             console.log(error);

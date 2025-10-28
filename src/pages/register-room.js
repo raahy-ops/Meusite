@@ -1,7 +1,8 @@
 import Navbar from "../components/Navbar.js";
 import Form from "../components/LoginForm.js";
+import { addRoom } from '../api/roomsAPI.js';
 
-export default function renderManageRoom() {
+export default function renderRegisterRoom() {
     
     //Menu (navigation)
     const nav = document.getElementById('navbar');
@@ -14,33 +15,44 @@ export default function renderManageRoom() {
     titulo.textContent = 'Gerenciar quarto';
 
     const contentForm = formulario.querySelector('form');
+    contentForm.enctype = "multipart/form-data";
 
     //nome, numero, qtd_casal, qtd_solteiro, preco, disponivel, multiple files
-    const inputNome = contentForm.querySelector('input[type=email]');
+   const inputNome = contentForm.querySelector('input[type=email]');
     inputNome.type = 'text';
     inputNome.placeholder = "Digite o nome"
+    inputNome.name = 'nome';
 
-    const inputNumero = contentForm.querySelector('input[type=password]');
+     const inputNumero = contentForm.querySelector('input[type=password]');
     inputNumero.type = 'text';
     inputNumero.placeholder = "Digite o número"
+    inputNumero.name = 'numero';
 
 
-    const inputQtd_Casal = document.createElement('input');
-    inputQtd_Casal.type = 'number';
-    inputQtd_Casal.placeholder = 'Quantidade cama Casal'
-    inputQtd_Casal.min = 0;
-    inputQtd_Casal.max = 10;
+    const inputQnt_Casal = document.createElement('select');
+    inputQnt_Casal.className = 'select-qnt';
+    inputQnt_Casal.style.borderWidth = '0.15rem';
+    inputQnt_Casal.innerHTML =
+    `
+    <option class="" value="0">Quantidade cama de casal</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>`
 
-    const inputQtd_Solteiro = document.createElement('input');
-    inputQtd_Solteiro.type = 'number';
-    inputQtd_Solteiro.placeholder = 'Quantidade cama solteiro'
-    inputQtd_Solteiro.min = 0;
-    inputQtd_Solteiro.max = 3;
+    inputQnt_Casal.name = "qtd_casal";
 
-    const inputPreco = document.createElement('input');
+    const inputQnt_Solteiro = document.createElement('input');
+    inputQnt_Solteiro.type = 'number';
+    inputQnt_Solteiro.placeholder = 'Quantidade cama solteiro'
+    inputQnt_Solteiro.min = 0;
+    inputQnt_Solteiro.max = 3;
+    inputQnt_Solteiro.name = "qnt_solteiro";
+
+      const inputPreco = document.createElement('input');
     inputPreco.type = 'number';
-    inputPreco.placeholder = 'Preço da diária';
+    inputPreco.placeholder = 'Digite o preço da diária';
     inputPreco.step = "0.01";
+    inputPreco.name = "preco";
 
     const subTitDisp = document.createElement('p');
     subTitDisp.textContent = 'Quarto disponível:'
@@ -54,7 +66,7 @@ export default function renderManageRoom() {
     const inputDispTrue = document.createElement('input');
     inputDispTrue.type = 'radio';
     inputDispTrue.name = 'disponivel';
-    inputDispTrue.value = true;
+    inputDispTrue.value = "1";
     
     const labelFalse = document.createElement('label');
     labelFalse.textContent = 'Não';
@@ -62,7 +74,7 @@ export default function renderManageRoom() {
     const inputDispFalse = document.createElement('input');
     inputDispFalse.type = 'radio';
     inputDispFalse.name = 'disponivel';
-    inputDispFalse.value = false;
+    inputDispFalse.value = "0";
 
     divDisp.appendChild(subTitDisp);
     divDisp.appendChild(inputDispTrue);
@@ -77,16 +89,13 @@ export default function renderManageRoom() {
     inputFotos.id = 'formFileMultiple';
     inputFotos.multiple = true;
     inputFotos.accept = "image/*";
-
-    inputFotos.name 
+    inputFotos.name = 'fotos[]';
+ 
 
     
 
-
-
-
-    contentForm.insertBefore(inputQtd_Casal, contentForm.children[2]);
-    contentForm.insertBefore(inputQtd_Solteiro, contentForm.children[3]);
+    contentForm.insertBefore(inputQnt_Casal, contentForm.children[2]);
+    contentForm.insertBefore(inputQnt_Solteiro, contentForm.children[3]);
     contentForm.insertBefore(inputPreco, contentForm.children[4]);
     contentForm.insertBefore(divDisp, contentForm.children[5]);
     contentForm.insertBefore(inputFotos, contentForm.children[6]);
@@ -98,11 +107,11 @@ export default function renderManageRoom() {
         e.preventDefault();
         
         try {
-            const response =  await addRoom(this);
-            console.log("Resposta ao servideor: " + response);
+            const response =  await addRoom(contentForm);
+            console.log("Resposta ao servideor: ", response);
         }
         catch(error) {
-            console.log("Erro ao enviar requisição: " + errpr.message);
+            console.log("Erro ao enviar requisição: " + error.message);
 
         }
     })

@@ -1,19 +1,19 @@
 const key = "aurora_cart";
 
-export function setCart(cart){
-    localStorage.setItem(key, JSON.stringify(cart));
+export function setCart(aurora_cart){
+    localStorage.setItem(key, JSON.stringify(aurora_cart));
 }
 export function getCart(){
     try{
         const raw = localStorage.getItem(key);
-        return raw ? JSON.parse(raw) : { status : "draft", items: []}
-    }catch {
-        return{status: "draft", items: []};
+        return raw ? JSON.parse(raw) : { status : "draft", items: []};
+    }catch{
+        return {status: "draft", items: []};
     }
     
 }
 
-export function addItemToCart(item){
+export function addItemToAurora_Cart(item){
     const aurora_cart = getCart();
     aurora_cart.items.push(item);
     setCart(aurora_cart);
@@ -31,19 +31,19 @@ export function removeItemFromAurora_Cart(i){
 
 export function clearAurora_Cart(){
     setCart({
-        status : "draft",
+        status: "draft",
         item: []
     });
 }
 
 export function getTotalItems(){
-    const{items} = getCart();
+    const{ items } = getCart();
     const total = items.reduce((acc, it) =>
         acc + Number(it.subtotal || 0), 0 
     );
     return {
         total,
-        qtde_items: items.length
+        qnte_items: items.length
     };
 
 }

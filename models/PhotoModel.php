@@ -17,18 +17,19 @@ class PhotoModel{
         return $result->fetch_assoc();
     }
 
-    public static function getByRoomId($conn, $id){  //
-        $sql = "SELECT f.nome
-        FROM imagens_quatos qf
-        JOIN imagens f ON qf.foto_id = f.id
-        WHERE qf.quarto_id = ?";
+     public static function getByRoomId($conn, $id) {
+        $sql = "SELECT img.nome
+        FROM imagens_quartos iq
+        JOIN imagens img ON iq.imagem_id = img.id
+        WHERE iq.quarto_id = ?";
 
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $stat = $conn->prepare($sql);
+        $stat->bind_param("i", $id);
+        $stat->execute();
+        $result = $stat->get_result();
         $photos = [];
-        while ( $row = $result->fetch_assoc()){
+
+        while ( $row = $result->fetch_assoc()) {
             $photos[] = $row['nome'];
         }
         return $photos;
@@ -48,6 +49,7 @@ class PhotoModel{
         $sql = "INSERT INTO imagens_quarto (imagem_id, quarto_id) VALUES (?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ii", $idRoom, $idPhoto);
+        
         if ($stmt->execute()){
             return $conn->insert_id;
         }
