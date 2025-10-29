@@ -106,7 +106,7 @@ export default function renderRegisterRoom() {
     contentForm.addEventListener('submit', async (e) =>{
         e.preventDefault();
         
-        try {
+        try{
             const response =  await addRoom(contentForm);
             console.log("Resposta ao servideor: ", response);
         }

@@ -7,7 +7,7 @@ class OrderModel{
     
 public static function create($conn, $data){
 
-    $sql = "INSERT INTO pedidos (usuario_id, cliente_id, pagamento ) VALUES (?,?,?)";
+    $sql = "INSERT INTO pedidos (usuario_id, cliente_id, pagamento) VALUES (?, ?, ?)";
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("iis",
@@ -38,13 +38,12 @@ public static function delete($conn, $id){
 }
 
 public static function update($conn, $id, $data){
-    $sql = "UPDATE pedidos SET usuario_id = ?, cliente_id = ?, data = ?, pagamento = ? WHERE id = ?";
+    $sql = "UPDATE pedidos SET usuario_id = ?, cliente_id = ?, pagamento = ? WHERE id = ?";
 
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("iissi",
+        $stmt->bind_param("iisi",
             $data["usuario_id"],
             $data["cliente_id"],
-            $data["data"],
             $data["pagamento"],
             $id
         );
@@ -52,7 +51,7 @@ public static function update($conn, $id, $data){
 }
 
 public static function getById($conn, $id){
-    $sql = "SELECT id, usuario_id, cliente_id, data, pagamento FROM pedidos WHERE id = ?";
+    $sql = "SELECT * FROM pedidos WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -97,7 +96,7 @@ public static function getById($conn, $id){
                     // para avaliar se o quarto esta disponivel 
                     // no intervalo de datas
                     // ReserveModel::isConflict();
-                    if ( !ReservationModel::isQuartoDisponivel($conn, $id, $inicio,$fim)){
+                    if (!ReservationModel::isQuartoDisponivel($conn, $id, $inicio,$fim)){
                         $reservas[] = "Quarto {$id} já está reservado!";
                         continue;
                     }
@@ -106,7 +105,7 @@ public static function getById($conn, $id){
                     $reserverResult = ReservationModel::create($conn,[
                         "pedido_id" => $order_id,
                         "quarto_id" => $id,
-                        "adicional_id" => 15,
+                        "adicional_id" => null,
                         "inicio" => $inicio,
                         "fim" => $fim,
                     ]);
