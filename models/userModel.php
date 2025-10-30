@@ -1,7 +1,5 @@
 <?php
 
-
-
 class UserModel{
     public static function validateUser($conn, $email, $password){
         //$sql = "SELECT * FROM usuarios WHERE email = ?";

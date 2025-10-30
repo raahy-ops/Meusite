@@ -39,7 +39,7 @@ export default function renderRegisterRoom() {
     <option value="2">2</option>
     <option value="3">3</option>`
 
-    inputQnt_Casal.name = "qtd_casal";
+    inputQnt_Casal.name = "qnt_casal";
 
     const inputQnt_Solteiro = document.createElement('input');
     inputQnt_Solteiro.type = 'number';
@@ -103,20 +103,14 @@ export default function renderRegisterRoom() {
     const btnRegisterRoom = contentForm.querySelector('button');
     btnRegisterRoom.textContent = 'Cadastrar';
 
-    contentForm.addEventListener('submit', async (e) =>{
+     contentForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        try{
-            const response =  await addRoom(contentForm);
-            console.log("Resposta ao servideor: ", response);
+        try { 
+            const response = await addRoom(contentForm);
+            console.log("Resposta do servidor: ", response);
         }
-        catch(error) {
+        catch (error) {
             console.log("Erro ao enviar requisição: " + error.message);
-
         }
     })
-
-    // divRoot.appendChild()
-
-    //Rodapé
 }

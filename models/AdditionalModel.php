@@ -5,12 +5,12 @@ class AdditionalModel{
        
 public static function create($conn, $data){
 
-    $sql = "INSERT INTO adicionais(nome, preco) VALUES (?,?)";
+    $sql = "INSERT INTO adicionais (nome, preco) VALUES (?,?)";
 
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sd",
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sd",
         $data["nome"],
-        $data["preco"],
+        $data["preco"]
     );
     return $stmt->execute();
 }

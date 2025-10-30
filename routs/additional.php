@@ -15,6 +15,8 @@ if ( $_SERVER['REQUEST_METHOD'] === "GET" ){
 }
 
 elseif ( $_SERVER['REQUEST_METHOD'] === "POST" ){
+
+    validateTokenAPI("TI");
     $data = json_decode( file_get_contents('php://input'), true );
     AdditionalController::create($conn, $data);
 
