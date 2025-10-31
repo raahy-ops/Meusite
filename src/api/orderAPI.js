@@ -1,25 +1,26 @@
-export async function checkoutOrder(items){
-    const url = "api/orders/reservation";
+import { getToken } from "./authAPI.js";
+
+export async function finishedOrder(metodoPagamento, reservations){
+    const url = "api/order/reservation";
     const body = {
-        cliente_id: 39,
-
-
-
-
-        pagamento : "pix",
-        quartos : items.map(it => (
+        pagamento : metodoPagamento,
+        quartos : reservations.map(item => (
         {
-            id : it.roomId,
-            inicio : it.checkIn,
-            fim: it.checkOut 
+            id : item.id,
+            inicio : item.checkIn,
+            fim: item.checkOut 
         }
         )) 
     };
+
+    const token = getToken?.();
+
     const res = await fetch(url, {
         method: "POST",
         headers: {
             "Accept" : "application/json",
-            "Content-Typer": "application/json"
+            "Content-Typer": "application/json",
+            "Authorization": `Bearer ${token}`
         },
         credentials: "same-origin",
         body: JSON.stringify(body)
@@ -35,7 +36,7 @@ export async function checkoutOrder(items){
         data = null;
     }
 
-    if(!data){
+    if(!res.ok){
         const message = `Erro ao enviar pedido: ${res.status}`;
         return {ok: false, raw: data, message};
     }

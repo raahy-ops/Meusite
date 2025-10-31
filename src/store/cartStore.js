@@ -18,7 +18,7 @@ export function getCart(){
 
 export function addItemToAurora_Cart(item){
     const aurora_cart = getCart();
-    aurora_cart.items.push(item);
+    aurora_cart.push(item);
     setCart(aurora_cart);
     return aurora_cart;
 
@@ -40,6 +40,6 @@ export function getTotalItems(){
     const  items  = getCart();
     const total = items.reduce((acc, it) =>
         acc + Number(it.subtotal || 0), 0);
-    return { total, qnte_items: items.length };
+    return total;
 
 }

@@ -23,6 +23,7 @@ elseif ( $_SERVER['REQUEST_METHOD'] === "POST" ){
 }              //Método criar
 
 elseif($_SERVER['REQUEST_METHOD'] === "PUT"){
+        validateTokenAPI("TI");
         $data = json_decode(file_get_contents("php://input"), true);
         $id = $data["id"] ?? null;
         AdditionalController::update($conn, $id, $data);
@@ -30,8 +31,9 @@ elseif($_SERVER['REQUEST_METHOD'] === "PUT"){
 
  
 elseif ( $_SERVER['REQUEST_METHOD'] === "DELETE" ){
-    $id = $segments[2] ?? null;
- 
+    validateTokenAPI("TI");
+    $data = json_decode( file_get_contents('php://input'), true );
+    $id = $data['id'];
     if(isset($id)){
         AdditionalController::delete($conn,$id);
     }

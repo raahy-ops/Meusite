@@ -3,6 +3,8 @@
 
 
   if ( $_SERVER['REQUEST_METHOD'] === "GET" ){
+    validateTokenAPI("TI");
+
 
     $id = $segments[2] ?? null;
  
@@ -21,6 +23,7 @@
 
 
   elseif ( $_SERVER['REQUEST_METHOD'] === "PUT" ){
+     validateTokenAPI("admin");
   $data = json_decode( file_get_contents('php://input'), true );
   $id = $data['id'];
   ClientController::update($conn, $id, $data);
@@ -28,7 +31,10 @@
 
 
 elseif ( $_SERVER['REQUEST_METHOD'] === "DELETE" ){
-    $id = $segments[2] ?? null;
+    
+  validateTokenAPI("admin");
+    $data = json_decode( file_get_contents('php://input'), true );
+    $id = $data['id'];
  
   if(isset($id)){
     ClientController::delete($conn,$id);
